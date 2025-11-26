@@ -130,6 +130,6 @@ Penilaian akan dilakukan berdasarkan commit nya. Semakin banyak dan kompleks yan
 
 ---
 
-**Ganbatte**
+![alt text](<No Problem Running GIF by ProBit Global.gif>)
 
-<iframe src="https://giphy.com/embed/ChX3hzy5CkXsI" width="480" height="245" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/sad-studio-ghibli-ChX3hzy5CkXsI">via GIPHY</a></p>
+Semangatt, badai pasti berlalu
