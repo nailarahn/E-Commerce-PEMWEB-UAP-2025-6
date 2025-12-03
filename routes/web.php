@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WalletController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,3 +21,28 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+//wallet
+Route::get('/wallet', [WalletController::class, 'index'])->name('wallet.index');
+Route::post('/wallet/topup', [WalletController::class, 'topUp'])->name('wallet.topup');
+Route::get('/wallet/history', [WalletController::class, 'history'])->name('wallet.history');
+
+//payment (virtual account)
+Route::get('/payment/{transaction}', [PaymentController::class, 'showPaymentPage'])
+    ->name('payment.show');
+
+Route::post('/payment/create-va', [PaymentController::class, 'createVA'])
+    ->name('payment.createVA');
+
+Route::post('/payment/check-status', [PaymentController::class, 'checkStatus'])
+    ->name('payment.checkStatus');
+
+//checkout
+Route::get('/checkout/{product}', [CheckoutController::class, 'checkout'])
+    ->name('checkout.page');
+
+Route::post('/checkout/process', [CheckoutController::class, 'process'])
+    ->name('checkout.process');
+
+Route::get('/checkout/success/{transaction}', [CheckoutController::class, 'success'])
+    ->name('checkout.success');
