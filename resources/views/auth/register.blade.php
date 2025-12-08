@@ -46,7 +46,7 @@
 
         <div class="flex justify-center mt-6">
             <x-primary-button 
-                class="w-full justify-center hover:opacity-90" 
+                class="w-full justify-center hover:opacity-90 focus:ring-[#8bae8e] focus:border-[#8bae8e]" 
                 style="background-color: #8bae8e; color: white;">
                 Register
             </x-primary-button>
