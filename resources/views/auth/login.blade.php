@@ -28,12 +28,12 @@
                 type="password"
                 name="password"
                 required
-                autocomplete="current-password" />
+                autocomplete="current-password"/>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <!-- Forgot Password BELOW PASSWORD -->
+        <!-- Forgot Password  -->
         <div class="mt-2 text-right">
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900"
@@ -43,7 +43,7 @@
             @endif
         </div>
 
-        <!-- Remember Me BELOW FORGOT PASSWORD -->
+        <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" 
@@ -54,14 +54,12 @@
             </label>
         </div>
 
-        <!-- LOGIN BUTTON CENTERED & FULL WIDTH -->
         <div class="flex justify-center mt-6">
             <x-primary-button 
                 class="w-full justify-center hover:opacity-90" 
                 style="background-color: #8bae8e; color: white;">
                 Log in
             </x-primary-button>
-        </div>
-
+        </div> 
     </form>
 </x-guest-layout>
