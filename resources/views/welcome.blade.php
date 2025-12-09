@@ -198,11 +198,11 @@
 
             <!-- CARD 1 -->
             <div class="bg-white rounded-xl shadow p-4">
-                <img src="https://images.unsplash.com/photo-1611075381418-364fba124bb8"
-                     class="rounded-lg h-40 w-full object-cover">
-                <h3 class="mt-3 font-semibold">Airy Tone Blusher</h3>
-                <p class="text-gray-500 text-sm">All Take Mood Like Palette</p>
-                <p class="mt-1 font-bold">$20.50</p>
+                <img src="/assets/images/products/2/Cosrx-cleanser.jpg"
+                     class="rounded-lg h-60 w-full object-scale-down object-center">
+                <h3 class="mt-3 font-semibold">Cosrx</h3>
+                <p class="text-gray-500 text-sm">Low pH Good Morning Gel Cleanser</p>
+                <p class="mt-1 font-bold">Rp. 130.000</p>
                 <button class="mt-3 w-full py-2 bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
                     ADD TO BAG
                 </button>
@@ -210,11 +210,11 @@
 
             <!-- CARD 2 -->
             <div class="bg-white rounded-xl shadow p-4">
-                <img src="https://images.unsplash.com/photo-1607779097040-4289c2243d59"
-                     class="rounded-lg h-40 w-full object-cover">
-                <h3 class="mt-3 font-semibold">Glazing Morning Balm</h3>
-                <p class="text-gray-500 text-sm">Moist & Shine</p>
-                <p class="mt-1 font-bold">$17.90</p>
+                <img src="/assets/images/products/3/Somethinc-Toner.jpg"
+                    class="rounded-lg h-60 w-full object-scale-down object-center">
+                <h3 class="mt-3 font-semibold">Somethinc Glow Maker</h3>
+                <p class="text-gray-500 text-sm">AHA BHA PHA Clarifying Toner</p>
+                <p class="mt-1 font-bold">Rp. 119.000</p>
                 <button class="mt-3 w-full py-2 bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
                     ADD TO BAG
                 </button>
@@ -222,11 +222,11 @@
 
             <!-- CARD 3 -->
             <div class="bg-white rounded-xl shadow p-4">
-                <img src="https://images.unsplash.com/photo-1601042873368-9b5c0b3a67c1"
-                     class="rounded-lg h-40 w-full object-cover">
-                <h3 class="mt-3 font-semibold">Rose Dewy Lip Serum</h3>
-                <p class="text-gray-500 text-sm">Soft Tint Liquid Blush</p>
-                <p class="mt-1 font-bold">$23.00</p>
+                <img src="/assets/images/products/6/Retinol-Serum.png"
+                    class="rounded-lg h-60 w-full object-scale-down object-center">
+                <h3 class="mt-3 font-semibold">Glad2Glow</h3>
+                <p class="text-gray-500 text-sm">Peach Retinol Serum</p>
+                <p class="mt-1 font-bold">Rp. 38.000</p>
                 <button class="mt-3 w-full py-2 bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
                     ADD TO BAG
                 </button>
@@ -234,11 +234,11 @@
 
             <!-- CARD 4 -->
             <div class="bg-white rounded-xl shadow p-4">
-                <img src="https://images.unsplash.com/photo-1590156223778-7141e85282da"
-                     class="rounded-lg h-40 w-full object-cover">
-                <h3 class="mt-3 font-semibold">Bliss Jelly Set</h3>
-                <p class="text-gray-500 text-sm">Berry Tint + Balm Set</p>
-                <p class="mt-1 font-bold">$30.00</p>
+                <img src="/assets/images/products/7/Skintific-moist.png"
+                    class="rounded-lg h-60 w-full object-scale-down object-center">
+                <h3 class="mt-3 font-semibold">Skintific MSH Niacinamide</h3>
+                <p class="text-gray-500 text-sm">Brightening Moisture Gel</p>
+                <p class="mt-1 font-bold">Rp. 140.000</p>
                 <button class="mt-3 w-full py-2 bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
                     ADD TO BAG
                 </button>
@@ -272,31 +272,31 @@
 
             <!-- Item -->
             <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1601042873368-9b5c0b3a67c1"
+                <img src="/assets/images/facewash.jpg"
                     class="object-cover h-40 w-full group-hover:scale-110 transition">
                 <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Face Wash</p>
             </div>
 
             <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1607779097040-4289c2243d59"
+                <img src="/assets/images/toner.jpg"
                     class="object-cover h-40 w-full group-hover:scale-110 transition">
                 <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Toner</p>
             </div>
 
             <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1611075381418-364fba124bb8"
+                <img src="/assets/images/serum.jpg"
                     class="object-cover h-40 w-full group-hover:scale-110 transition">
                 <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Serum</p>
             </div>
 
             <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1611075381418-364fba124bb8"
+                <img src="/assets/images/moisturizer.jpg"
                     class="object-cover h-40 w-full group-hover:scale-110 transition">
                 <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Moisturizer</p>
             </div>
 
             <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
-                <img src="https://images.unsplash.com/photo-1590156223778-7141e85282da"
+                <img src="/assets/images/sunscreen.jpg"
                     class="object-cover h-40 w-full group-hover:scale-110 transition">
                 <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Sunscreen</p>
             </div>

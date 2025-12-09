@@ -2,10 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
-    //
+    public function index()
+    {
+        $products = Product::with(['images' => function($q) {
+            $q->where('is_thumbnail', true);
+        }])->get();
+
+        return view('products.index', compact('products'));
+    }
+
+    public function show($slug)
+    {
+        $product = Product::with('images')->where('slug', $slug)->firstOrFail();
+
+        return view('products.show', compact('product'));
+    }
 }
