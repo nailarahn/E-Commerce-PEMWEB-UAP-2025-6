@@ -7,6 +7,58 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <style>
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: 35px;
+            height: 35px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 22px;
+            font-weight: 600;
+            color: #7a7a7a;
+        }
+
+        .swiper-button-next::after {
+            content: '>';
+        }
+
+        .swiper-button-prev::after {
+            content: '<';
+        }
+
+        .swiper-button-next {
+            right: 15px;
+        }
+
+        .swiper-button-prev {
+            left: 15px;
+        }
+
+        .myHeroSwiper .swiper-button-next,
+        .myHeroSwiper .swiper-button-prev {
+            top: 50% !important;
+            transform: translateY(-50%);
+        }
+
+        .myHeroSwiper .swiper-pagination {
+            bottom: 15px !important;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 </head>
 
 <body class="bg-[#fdf7f7] text-gray-800">
@@ -63,13 +115,13 @@
     <!-- HERO SECTION -->
     <section class="w-full max-w-7xl mx-auto px-6 py-8">
 
-        <div class="swiper myHeroSwiper">
+        <div class="swiper myHeroSwiper relative" style="height: 450px;">
 
             <div class="swiper-wrapper">
 
                 <!-- SLIDE 1 -->
                 <div class="swiper-slide">
-                    <div class="bg-[#D8ECF8] rounded-2xl flex flex-col md:flex-row items-center p-10">
+                    <div class="bg-[#D8ECF8] rounded-2xl flex flex-col md:flex-row items-center p-10 h-full">
 
                         <!-- IMAGE -->
                         <div class="w-full md:w-1/2 flex justify-center">
@@ -98,7 +150,7 @@
 
                 <!-- SLIDE 2 -->
                  <div class="swiper-slide">
-                    <div class="bg-[#FDE7EA] rounded-2xl flex flex-col md:flex-row items-center p-10">
+                    <div class="bg-[#FDE7EA] rounded-2xl flex flex-col md:flex-row items-center p-10 h-full">
 
                         <!-- IMAGE -->
                         <div class="w-full md:w-1/2 flex justify-center">
@@ -216,49 +268,58 @@
     <section class="max-w-7xl mx-auto px-6 mt-16 mb-20">
         <h2 class="text-xl font-bold mb-4">SHOP BY CATEGORY</h2>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="rounded-xl overflow-hidden relative group">
+        <div class="flex gap-6 overflow-x-auto pb-2 scrollbar-hide">
+
+            <!-- Item -->
+            <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
                 <img src="https://images.unsplash.com/photo-1601042873368-9b5c0b3a67c1"
-                     class="object-cover h-40 w-full group-hover:scale-110 transition">
-                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">MAKEUP</p>
+                    class="object-cover h-40 w-full group-hover:scale-110 transition">
+                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Face Wash</p>
             </div>
 
-            <div class="rounded-xl overflow-hidden relative group">
+            <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
                 <img src="https://images.unsplash.com/photo-1607779097040-4289c2243d59"
-                     class="object-cover h-40 w-full group-hover:scale-110 transition">
-                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">SKINCARE</p>
+                    class="object-cover h-40 w-full group-hover:scale-110 transition">
+                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Toner</p>
             </div>
 
-            <div class="rounded-xl overflow-hidden relative group">
+            <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
                 <img src="https://images.unsplash.com/photo-1611075381418-364fba124bb8"
-                     class="object-cover h-40 w-full group-hover:scale-110 transition">
-                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">HAIR CARE</p>
+                    class="object-cover h-40 w-full group-hover:scale-110 transition">
+                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Serum</p>
             </div>
 
-            <div class="rounded-xl overflow-hidden relative group">
+            <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
+                <img src="https://images.unsplash.com/photo-1611075381418-364fba124bb8"
+                    class="object-cover h-40 w-full group-hover:scale-110 transition">
+                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Moisturizer</p>
+            </div>
+
+            <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
                 <img src="https://images.unsplash.com/photo-1590156223778-7141e85282da"
-                     class="object-cover h-40 w-full group-hover:scale-110 transition">
-                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">GIFT SETS</p>
+                    class="object-cover h-40 w-full group-hover:scale-110 transition">
+                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Sunscreen</p>
             </div>
         </div>
     </section>
-<script>
-    var swiper = new Swiper(".myHeroSwiper", {
-        loop: true,
-        autoplay: {
-            delay: 3500,
-            disableOnInteraction: false,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-    });
-</script>
+
+    <script>
+        var swiper = new Swiper(".myHeroSwiper", {
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
 
 </body>
 </html>
