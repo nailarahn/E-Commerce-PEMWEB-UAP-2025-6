@@ -5,6 +5,7 @@ use App\Http\Controllers\WalletController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,3 +47,7 @@ Route::post('/checkout/process', [CheckoutController::class, 'process'])
 
 Route::get('/checkout/success/{transaction}', [CheckoutController::class, 'success'])
     ->name('checkout.success');
+
+// products
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
