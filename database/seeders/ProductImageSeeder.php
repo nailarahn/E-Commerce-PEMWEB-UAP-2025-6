@@ -14,14 +14,12 @@ class ProductImageSeeder extends Seeder
         $products = Product::all();
 
         foreach ($products as $product) {
-            // Gambar thumbnail (gambar utama)
             ProductImage::create([
                 'product_id' => $product->id,
                 'image' => 'product-' . $product->id . '-1.jpg',
                 'is_thumbnail' => true,
             ]);
 
-            // Gambar tambahan
             ProductImage::create([
                 'product_id' => $product->id,
                 'image' => 'product-' . $product->id . '-2.jpg',
