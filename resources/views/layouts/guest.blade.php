@@ -20,7 +20,7 @@
 
             <div>
                 <a href="/">
-                    <img src="{{ asset('assets/images/logo-removebg.png') }}" class="w-28 h-28" alt="Logo">
+                    <img src="{{ asset('assets/images/logo.png') }}" class="w-24 h-20" alt="Logo">
                 </a>
             </div>
 
