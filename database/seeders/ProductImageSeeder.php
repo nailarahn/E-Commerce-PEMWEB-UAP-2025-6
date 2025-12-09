@@ -10,28 +10,67 @@ class ProductImageSeeder extends Seeder
 {
     public function run(): void
     {
-        // Ambil semua product
         $products = Product::all();
 
         foreach ($products as $product) {
-            // Gambar thumbnail (gambar utama)
             ProductImage::create([
                 'product_id' => $product->id,
-                'image' => 'product-' . $product->id . '-1.jpg',
+                'image' => 'product-' . $product->id . 'public/assets/images/Skintific-cleanser.png',
                 'is_thumbnail' => true,
             ]);
 
-            // Gambar tambahan
             ProductImage::create([
                 'product_id' => $product->id,
-                'image' => 'product-' . $product->id . '-2.jpg',
-                'is_thumbnail' => false,
+                'image' => 'product-' . $product->id . 'public/assets/images/Cosrx-cleanser.jpg',
+                'is_thumbnail' => true,
             ]);
 
             ProductImage::create([
                 'product_id' => $product->id,
-                'image' => 'product-' . $product->id . '-3.jpg',
-                'is_thumbnail' => false,
+                'image' => 'product-' . $product->id . 'public/assets/images/Somethinc-Toner.jpg',
+                'is_thumbnail' => true,
+            ]);
+
+            ProductImage::create([
+                'product_id' => $product->id,
+                'image' => 'product-' . $product->id . 'public/assets/images/Lightening-Toner.jpg',
+                'is_thumbnail' => true,
+            ]);
+
+            ProductImage::create([
+                'product_id' => $product->id,
+                'image' => 'product-' . $product->id . 'public/assets/images/Niacinamid-Serum.jpg',
+                'is_thumbnail' => true,
+            ]);
+
+            ProductImage::create([
+                'product_id' => $product->id,
+                'image' => 'product-' . $product->id . 'public/assets/images/Retinol-Serum.png',
+                'is_thumbnail' => true,
+            ]);
+
+            ProductImage::create([
+                'product_id' => $product->id,
+                'image' => 'product-' . $product->id . 'public/assets/images/Skintific-moist.png',
+                'is_thumbnail' => true,
+            ]);
+
+            ProductImage::create([
+                'product_id' => $product->id,
+                'image' => 'product-' . $product->id . 'public/assets/images/Somethinc-moist.jpg',
+                'is_thumbnail' => true,
+            ]);
+
+            ProductImage::create([
+                'product_id' => $product->id,
+                'image' => 'product-' . $product->id . 'public/assets/images/Azarine-sunscreen.jpg',
+                'is_thumbnail' => true,
+            ]);
+
+            ProductImage::create([
+                'product_id' => $product->id,
+                'image' => 'product-' . $product->id . 'public/assets/images/SkinAqua-sunscreen.jpg',
+                'is_thumbnail' => true,
             ]);
         }
     }
