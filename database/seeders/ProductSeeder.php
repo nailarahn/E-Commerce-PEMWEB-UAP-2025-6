@@ -23,7 +23,7 @@ class ProductSeeder extends Seeder
                 'stock' => 50,
             ],
             [
-                'name' => 'Low pH Good Morning Gel Cleanser',
+                'name' => 'Cosrx Low pH Good Morning Gel Cleanser',
                 'product_category_id' => 1,
                 'price' => 130000,
                 'description' => 'Facial wash untuk semua jenis kulit.',

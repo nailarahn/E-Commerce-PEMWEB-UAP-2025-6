@@ -10,24 +10,46 @@ class ProductImageSeeder extends Seeder
     public function run(): void
     {
         $images = [
-            1 => 'Skintific-cleanser.png',
-            2 => 'Hanasui-facial-wash.jpg',
-            3 => 'Somethinc-toner.jpg',
-            4 => 'Wardah-toner.jpg',
-            5 => 'Avoskin-niacinamide.jpg',
-            6 => 'Scarlett-acne-serum.jpg',
-            7 => 'Skintific-moist.png',
-            8 => 'Somethinc-moist.jpg',
-            9 => 'Azarine-sunscreen.jpg',
-            10 => 'SkinAqua-sunscreen.jpg',
+            1 => [
+                ['file' => 'Skintific-cleanser.png', 'thumbnail' => true],
+            ],
+            2 => [
+                ['file' => 'Cosrx-cleanser.jpg', 'thumbnail' => true],
+            ],
+            3 => [
+                ['file' => 'Somethinc-Toner.jpg', 'thumbnail' => true],
+            ],
+            4 => [
+                ['file' => 'Lightening-Toner.jpg', 'thumbnail' => true],
+            ],
+            5 => [
+                ['file' => 'Niacinamid-Serum.jpg', 'thumbnail' => true],
+            ],
+            6 => [
+                ['file' => 'Retinol-Serum.png', 'thumbnail' => true],
+            ],
+            7 => [
+                ['file' => 'Skintific-moist.png', 'thumbnail' => true],
+            ],
+            8 => [
+                ['file' => 'Somethinc-moist.jpg', 'thumbnail' => true],
+            ],
+            9 => [
+                ['file' => 'Azarine-sunscreen.jpg', 'thumbnail' => true],
+            ],
+            10 => [
+                ['file' => 'SkinAqua-sunscreen.jpg', 'thumbnail' => true],
+            ],
         ];
 
-        foreach ($images as $productId => $filename) {
-            ProductImage::create([
-                'product_id'   => $productId,
-                'image'        => 'products/' . $productId . '/' . $filename,
-                'is_thumbnail' => true,
-            ]);
+        foreach ($images as $productId => $imageList) {
+            foreach ($imageList as $img) {
+                ProductImage::create([
+                    'product_id'   => $productId,
+                    'image'        => 'assets/images/products/' . $productId . '/' . $img['file'],
+                    'is_thumbnail' => $img['thumbnail'],
+                ]);
+            }
         }
     }
 }
