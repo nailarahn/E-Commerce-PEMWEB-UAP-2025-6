@@ -21,4 +21,11 @@ class ProductController extends Controller
 
         return view('products.show', compact('product'));
     }
+
+    public function category($slug)
+    {
+        $products = Product::where('category', $slug)->get();
+
+        return view('category', compact('products', 'slug'));
+    }
 }

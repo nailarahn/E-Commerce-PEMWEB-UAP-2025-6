@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lovellea Beauty</title>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -17,29 +19,17 @@
             border-radius: 50%;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
-
         .swiper-button-next::after,
         .swiper-button-prev::after {
             font-size: 22px;
             font-weight: 600;
             color: #7a7a7a;
         }
+        .swiper-button-next::after { content: '>'; }
+        .swiper-button-prev::after { content: '<'; }
 
-        .swiper-button-next::after {
-            content: '>';
-        }
-
-        .swiper-button-prev::after {
-            content: '<';
-        }
-
-        .swiper-button-next {
-            right: 15px;
-        }
-
-        .swiper-button-prev {
-            left: 15px;
-        }
+        .swiper-button-next { right: 15px; }
+        .swiper-button-prev { left: 15px; }
 
         .myHeroSwiper .swiper-button-next,
         .myHeroSwiper .swiper-button-prev {
@@ -50,10 +40,7 @@
         .myHeroSwiper .swiper-pagination {
             bottom: 15px !important;
         }
-
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide {
             -ms-overflow-style: none;
             scrollbar-width: none;
@@ -63,40 +50,37 @@
 
 <body class="bg-[#fdf7f7] text-gray-800">
 
-    <!-- NAVBAR FIXED -->
+    <!-- NAVBAR -->
     <nav class="w-full bg-white py-4 shadow-sm fixed top-0 left-0 z-50">
         <div class="max-w-7xl mx-auto px-6 flex items-center justify-between relative">
-
-            <!-- LEFT : LOGO -->
+            
+            <!-- LEFT LOGO -->
             <div class="flex items-center gap-3">
                 <img src="/assets/images/logo.png" class="h-16" alt="Lovellea Logo">
             </div>
 
-            <!-- CENTER : MENU (ABSOLUTE CENTER) -->
-            <div class="hidden md:flex gap-10 text-sm font-semibold text-gray-700 
-                        absolute left-1/2 transform -translate-x-1/2">
+            <!-- CENTER MENU -->
+            <div class="hidden md:flex gap-16 text-sm font-semibold text-gray-700 absolute left-1/2 -translate-x-1/2">
                 <a href="#" class="hover:text-[#8BAE8E]">New</a>
                 <a href="#" class="hover:text-[#8BAE8E]">Brands</a>
                 <a href="#" class="hover:text-[#8BAE8E]">About</a>
                 <a href="#" class="hover:text-[#8BAE8E]">Contact</a>
             </div>
 
-            <!-- RIGHT : BUTTONS + ICONS -->
+            <!-- RIGHT AUTH + ICONS -->
             <div class="flex items-center gap-4 text-gray-700">
 
                 @auth
-                    <a href="/dashboard" class="text-sm font-semibold hover:text-pink-600">
-                        Dashboard
-                    </a>
+                    <a href="/dashboard" class="text-sm font-semibold hover:text-pink-600">Dashboard</a>
                 @else
                     <a href="{{ route('login') }}"
-                    class="bg-[#8BAE8E] text-white px-7 py-1 rounded-lg hover:opacity-90">
+                       class="bg-[#8BAE8E] text-white px-7 py-1 rounded-lg hover:opacity-90">
                         Login
                     </a>
 
                     <a href="{{ route('register') }}"
-                    class="bg-white text-[#8BAE8E] border border-[#8BAE8E] px-5 py-1 rounded-lg 
-                            hover:bg-[#8BAE8E] hover:text-white transition">
+                       class="bg-white text-[#8BAE8E] border border-[#8BAE8E] px-5 py-1 rounded-lg 
+                              hover:bg-[#8BAE8E] hover:text-white transition">
                         Register
                     </a>
                 @endauth
@@ -109,69 +93,57 @@
         </div>
     </nav>
 
-    <!-- SPACE SUPAYA KONTEN TIDAK TERTUTUP NAVBAR -->
+    <!-- SPACER -->
     <div class="pt-24"></div>
 
     <!-- HERO SECTION -->
     <section class="w-full max-w-7xl mx-auto px-6 py-8">
-
         <div class="swiper myHeroSwiper relative" style="height: 450px;">
-
             <div class="swiper-wrapper">
 
                 <!-- SLIDE 1 -->
                 <div class="swiper-slide">
-                    <div class="bg-[#D8ECF8] rounded-2xl flex flex-col md:flex-row items-center p-10 h-full">
+                    <div class="rounded-2xl flex flex-col md:flex-row items-center p-10 h-full 
+                        bg-cover bg-center"
+                    style="background-image: url('/assets/images/bener.jpg');">
 
                         <!-- IMAGE -->
                         <div class="w-full md:w-1/2 flex justify-center">
                             <img src="/assets/images/product1.png"
-                                class="w-64 md:w-80 drop-shadow-lg" alt="">
-                        </div>
-
-                        <!-- TEXT -->
-                        <div class="w-full md:w-1/2 mt-6 md:mt-0 md:pl-10 text-center md:text-left">
-                            <h2 class="text-4xl md:text-5xl font-extrabold text-[#2F4C98] leading-tight">
-                                2 по цене 1
-                            </h2>
-                            <p class="text-gray-700 mt-3">
-                                Успей приобрести! Предложение действует<br>
-                                до 1 апреля 2024 года
-                            </p>
-
-                            <a href="#"
-                            class="inline-block mt-6 bg-[#4D7CFE] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#3b63d6] transition">
-                            КУПИТЬ СЕЙЧАС
-                            </a>
+                                class="w-64 md:w-80 drop-shadow-lg"
+                                alt="">
                         </div>
 
                     </div>
                 </div>
 
                 <!-- SLIDE 2 -->
-                 <div class="swiper-slide">
-                    <div class="bg-[#FDE7EA] rounded-2xl flex flex-col md:flex-row items-center p-10 h-full">
+                <div class="swiper-slide">
+                    <div class="rounded-2xl flex flex-col md:flex-row items-center p-10 h-full 
+                        bg-cover bg-center"
+                    style="background-image: url('/assets/images/benerr.jpg');">
 
                         <!-- IMAGE -->
                         <div class="w-full md:w-1/2 flex justify-center">
                             <img src="/assets/images/product1.png"
-                                class="w-64 md:w-80 drop-shadow-lg" alt="">
+                                class="w-64 md:w-80 drop-shadow-lg"
+                                alt="">
                         </div>
 
-                        <!-- TEXT -->
-                        <div class="w-full md:w-1/2 mt-6 md:mt-0 md:pl-10 text-center md:text-left">
-                            <h2 class="text-4xl md:text-5xl font-extrabold text-[#2F4C98] leading-tight">
-                                2 по цене 1
-                            </h2>
-                            <p class="text-gray-700 mt-3">
-                                Успей приобрести! Предложение действует<br>
-                                до 1 апреля 2024 года
-                            </p>
+                    </div>
+                </div>
 
-                            <a href="#"
-                            class="inline-block mt-6 bg-[#4D7CFE] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#3b63d6] transition">
-                            КУПИТЬ СЕЙЧАС
-                            </a>
+                <!-- SLIDE 3 -->
+                <div class="swiper-slide">
+                    <div class="rounded-2xl flex flex-col md:flex-row items-center p-10 h-full 
+                        bg-cover bg-center"
+                    style="background-image: url('/assets/images/benerrr.jpg');">
+
+                        <!-- IMAGE -->
+                        <div class="w-full md:w-1/2 flex justify-center">
+                            <img src="/assets/images/product1.png"
+                                class="w-64 md:w-80 drop-shadow-lg"
+                                alt="">
                         </div>
 
                     </div>
@@ -196,60 +168,38 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-            <!-- CARD 1 -->
-            <div class="bg-white rounded-xl shadow p-4">
-                <img src="/assets/images/products/2/Cosrx-cleanser.jpg"
-                     class="rounded-lg h-60 w-full object-scale-down object-center">
-                <h3 class="mt-3 font-semibold">Cosrx</h3>
-                <p class="text-gray-500 text-sm">Low pH Good Morning Gel Cleanser</p>
-                <p class="mt-1 font-bold">Rp. 130.000</p>
-                <button class="mt-3 w-full py-2 bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
-                    ADD TO BAG
-                </button>
-            </div>
+            @php
+                $products = [
+                    ['img' => '2/Cosrx-cleanser.jpg', 'name' => 'Cosrx', 'desc' => 'Low pH Good Morning Gel Cleanser', 'price' => '130.000'],
+                    ['img' => '3/Somethinc-Toner.jpg', 'name' => 'Somethinc Glow Maker', 'desc' => 'AHA BHA PHA Clarifying Toner', 'price' => '119.000'],
+                    ['img' => '6/Retinol-Serum.png', 'name' => 'Glad2Glow', 'desc' => 'Peach Retinol Serum', 'price' => '38.000'],
+                    ['img' => '7/Skintific-moist.png', 'name' => 'Skintific MSH Niacinamide', 'desc' => 'Brightening Moisture Gel', 'price' => '140.000']
+                ];
+            @endphp
 
-            <!-- CARD 2 -->
-            <div class="bg-white rounded-xl shadow p-4">
-                <img src="/assets/images/products/3/Somethinc-Toner.jpg"
-                    class="rounded-lg h-60 w-full object-scale-down object-center">
-                <h3 class="mt-3 font-semibold">Somethinc Glow Maker</h3>
-                <p class="text-gray-500 text-sm">AHA BHA PHA Clarifying Toner</p>
-                <p class="mt-1 font-bold">Rp. 119.000</p>
-                <button class="mt-3 w-full py-2 bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
-                    ADD TO BAG
-                </button>
-            </div>
+            @foreach ($products as $p)
+                <div class="bg-white rounded-xl shadow p-4">
+                    <img src="/assets/images/products/{{ $p['img'] }}"
+                         class="rounded-lg h-60 w-full object-scale-down object-center">
 
-            <!-- CARD 3 -->
-            <div class="bg-white rounded-xl shadow p-4">
-                <img src="/assets/images/products/6/Retinol-Serum.png"
-                    class="rounded-lg h-60 w-full object-scale-down object-center">
-                <h3 class="mt-3 font-semibold">Glad2Glow</h3>
-                <p class="text-gray-500 text-sm">Peach Retinol Serum</p>
-                <p class="mt-1 font-bold">Rp. 38.000</p>
-                <button class="mt-3 w-full py-2 bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
-                    ADD TO BAG
-                </button>
-            </div>
+                    <h3 class="mt-3 font-semibold">{{ $p['name'] }}</h3>
+                    <p class="text-gray-500 text-sm">{{ $p['desc'] }}</p>
+                    <p class="mt-1 font-bold">Rp. {{ $p['price'] }}</p>
 
-            <!-- CARD 4 -->
-            <div class="bg-white rounded-xl shadow p-4">
-                <img src="/assets/images/products/7/Skintific-moist.png"
-                    class="rounded-lg h-60 w-full object-scale-down object-center">
-                <h3 class="mt-3 font-semibold">Skintific MSH Niacinamide</h3>
-                <p class="text-gray-500 text-sm">Brightening Moisture Gel</p>
-                <p class="mt-1 font-bold">Rp. 140.000</p>
-                <button class="mt-3 w-full py-2 bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
-                    ADD TO BAG
-                </button>
-            </div>
+                    <button class="mt-3 w-full py-2 bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
+                        Detail Produk
+                    </button>
+                </div>
+            @endforeach
+
         </div>
     </section>
 
     <!-- PROMO BANNER -->
     <section class="max-w-7xl mx-auto px-6 mt-16">
         <div class="bg-[#feeef5] rounded-xl p-10 flex flex-col md:flex-row items-center gap-10">
-            <img src="https://images.unsplash.com/photo-1611075381418-364fba124bb8"
+
+            <img src="/assets/images/products/8/Somethinc-moist.jpg"
                  class="h-48 rounded-xl object-cover">
 
             <div>
@@ -261,65 +211,102 @@
                     Shop now
                 </a>
             </div>
+
         </div>
     </section>
 
-    <!-- SHOP BY CATEGORY -->
+    <!-- CATEGORY -->
     <section class="max-w-7xl mx-auto px-6 mt-16 mb-20">
         <h2 class="text-xl font-bold mb-4">SHOP BY CATEGORY</h2>
 
         <div class="flex gap-6 overflow-x-auto pb-2 scrollbar-hide">
+            
+            @php
+                $categories = [
+                    ['slug' => 'facewash', 'img' => 'facewash.jpg', 'name' => 'Face Wash'],
+                    ['img' => 'toner.jpg', 'name' => 'Toner'],
+                    ['img' => 'serum.jpg', 'name' => 'Serum'],
+                    ['img' => 'moisturizer.jpg', 'name' => 'Moisturizer'],
+                    ['img' => 'sunscreen.jpg', 'name' => 'Sunscreen'],
+                ];
+            @endphp
 
-            <!-- Item -->
-            <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
-                <img src="/assets/images/facewash.jpg"
-                    class="object-cover h-40 w-full group-hover:scale-110 transition">
-                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Face Wash</p>
-            </div>
+            @foreach ($categories as $c)
+                <a href="{{ $c['slug'] ?? '#' }}">
+                    <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
+                        <img src="/assets/images/{{ $c['img'] }}"
+                             class="object-cover h-40 w-full group-hover:scale-110 transition">
+                        <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">{{ $c['name'] }}</p>
+                    </div>
+                </a>
+            @endforeach
 
-            <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
-                <img src="/assets/images/toner.jpg"
-                    class="object-cover h-40 w-full group-hover:scale-110 transition">
-                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Toner</p>
-            </div>
-
-            <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
-                <img src="/assets/images/serum.jpg"
-                    class="object-cover h-40 w-full group-hover:scale-110 transition">
-                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Serum</p>
-            </div>
-
-            <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
-                <img src="/assets/images/moisturizer.jpg"
-                    class="object-cover h-40 w-full group-hover:scale-110 transition">
-                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Moisturizer</p>
-            </div>
-
-            <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
-                <img src="/assets/images/sunscreen.jpg"
-                    class="object-cover h-40 w-full group-hover:scale-110 transition">
-                <p class="absolute bottom-2 left-3 text-white font-bold drop-shadow">Sunscreen</p>
-            </div>
         </div>
     </section>
 
+    <!-- SWIPER SCRIPT -->
     <script>
         var swiper = new Swiper(".myHeroSwiper", {
             loop: true,
-            autoplay: {
-                delay: 3500,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
+            autoplay: { delay: 3500, disableOnInteraction: false },
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+            pagination: { el: ".swiper-pagination", clickable: true }
         });
     </script>
+
+    <!-- FOOTER -->
+    <footer class="bg-white mt-20 pt-12 pb-6 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+
+            <!-- ABOUT -->
+            <div>
+                <h4 class="font-bold text-gray-700 mb-3">ABOUT</h4>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    <li><a href="#" class="hover:text-[#8BAE8E]">Company</a></li>
+                    <li><a href="#" class="hover:text-[#8BAE8E]">Community</a></li>
+                    <li><a href="#" class="hover:text-[#8BAE8E]">Careers</a></li>
+                </ul>
+            </div>
+
+            <!-- BLOG -->
+            <div>
+                <h4 class="font-bold text-gray-700 mb-3">BLOG</h4>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    <li><a href="#" class="hover:text-[#8BAE8E]">Tech</a></li>
+                    <li><a href="#" class="hover:text-[#8BAE8E]">Music</a></li>
+                    <li><a href="#" class="hover:text-[#8BAE8E]">Video</a></li>
+                </ul>
+            </div>
+
+            <!-- PRODUCTS -->
+            <div>
+                <h4 class="font-bold text-gray-700 mb-3">PRODUCTS</h4>
+                <ul class="space-y-2 text-gray-600 text-sm">
+                    <li><a href="#" class="hover:text-[#8BAE8E]">Lovellea App</a></li>
+                    <li><a href="#" class="hover:text-[#8BAE8E]">Lovellea Desktop</a></li>
+                    <li><a href="#" class="hover:text-[#8BAE8E]">Lovellea Cloud</a></li>
+                </ul>
+            </div>
+
+            <!-- LOGO + SOCIAL -->
+            <div class="flex flex-col items-start md:items-end">
+                <img src="/assets/images/logo.png" class="h-14 mb-2" alt="Lovellea Logo">
+                <p class="text-gray-600 text-sm mb-4">It's all about your beauty</p>
+
+                <div class="flex gap-4 text-gray-500 text-xl">
+                    <a href="#"><i class="fa-brands fa-facebook hover:text-[#8BAE8E]"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter hover:text-[#8BAE8E]"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram hover:text-[#8BAE8E]"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM COPYRIGHT -->
+        <div class="max-w-7xl mx-auto px-6 mt-10 flex flex-col md:flex-row justify-between text-gray-500 text-sm border-t border-gray-200 pt-4">
+            <p>Jl. Mawar 21, Malang, Indonesia</p>
+            <p>© 2025 Lovellea. All rights reserved</p>
+        </div>
+    </footer>
 
 </body>
 </html>

@@ -51,3 +51,6 @@ Route::get('/checkout/success/{transaction}', [CheckoutController::class, 'succe
 // products
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
+
+//category
+Route::get('/category/{slug}', [ProductController::class, 'category'])->name('category.show');
