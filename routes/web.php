@@ -14,7 +14,7 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('guest');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,7 +29,10 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // customer
-Route::get('/', fn()=>view('customer.home'));
+Route::middleware('auth')->group(function () {
+    Route::get('/home', fn()=>view('customer.home'))->name('customer.home');
+});
+
 Route::get('/product/{slug}', fn()=>view('customer.product'));
 
 Route::middleware('auth')->group(function () {
