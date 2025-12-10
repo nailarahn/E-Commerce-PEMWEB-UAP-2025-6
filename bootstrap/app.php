@@ -15,7 +15,6 @@ return Application::configure(basePath: dirname(__DIR__))
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
-        // Tambahkan ini
         'admin' => \App\Http\Middleware\AdminOnly::class,
         'seller' => \App\Http\Middleware\SellerOnly::class,
     ]);

@@ -16,10 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('guest');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -29,6 +25,10 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // customer
+Route::get('/home', function () {
+    return view('customer.home');
+})->name('customer.home')->middleware('auth');
+
 Route::middleware('auth')->group(function () {
     Route::get('/home', fn()=>view('customer.home'))->name('customer.home');
 });
@@ -68,7 +68,10 @@ Route::middleware(['auth', 'seller'])->group(function () {
 
 
 // admin
-Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'admin'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
 
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])
         ->name('dashboard');
@@ -79,7 +82,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/users/{id}', [AdminUserController::class, 'detail'])
         ->name('users.detail');
 
-    Route::get('/tioverifican', [AdminVerificationController::class, 'index'])
+    Route::get('/verification', [AdminVerificationController::class, 'index'])
         ->name('verification.index');
 
     Route::post('/verification/{id}/approve', [AdminVerificationController::class, 'approve'])
@@ -88,6 +91,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('/verification/{id}/reject', [AdminVerificationController::class, 'reject'])
         ->name('verification.reject');
 });
+
 
 
 //payment
