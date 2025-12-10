@@ -23,31 +23,53 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-//wallet
-Route::get('/wallet', [WalletController::class, 'index'])->name('wallet.index');
-Route::post('/wallet/topup', [WalletController::class, 'topUp'])->name('wallet.topup');
-Route::get('/wallet/history', [WalletController::class, 'history'])->name('wallet.history');
+// customer
+Route::get('/', fn()=>view('customer.home'));
+Route::get('/product/{slug}', fn()=>view('customer.product'));
 
-//payment (virtual account)
-Route::get('/payment/{transaction}', [PaymentController::class, 'showPaymentPage'])
-    ->name('payment.show');
+Route::middleware('auth')->group(function () {
+    Route::get('/checkout', fn()=>view('customer.checkout'));
+    Route::get('/history', fn()=>view('customer.history'));
 
-Route::post('/payment/create-va', [PaymentController::class, 'createVA'])
-    ->name('payment.createVA');
+    Route::get('/wallet/topup', fn()=>view('customer.wallet.topup'));
+    Route::get('/wallet/success', fn()=>view('customer.wallet.success'));
+});
 
-Route::post('/payment/check-status', [PaymentController::class, 'checkStatus'])
-    ->name('payment.checkStatus');
+//seller
+Route::middleware(['auth', 'seller'])->group(function () {
 
-//checkout
-Route::get('/checkout/{product}', [CheckoutController::class, 'checkout'])
-    ->name('checkout.page');
+    Route::get('/seller/dashboard', fn()=>view('seller.dashboard'));
 
-Route::post('/checkout/process', [CheckoutController::class, 'process'])
-    ->name('checkout.process');
+    Route::get('/store/register', fn()=>view('seller.store.register'));
+    Route::get('/seller/profile', fn()=>view('seller.store.profile'));
 
-Route::get('/checkout/success/{transaction}', [CheckoutController::class, 'success'])
-    ->name('checkout.success');
+    Route::resource('/seller/categories', SellerCategoryController::class)->only(['index','create','edit']);
 
-// products
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
+    Route::resource('/seller/products', SellerProductController::class)->only(['index','create','edit']);
+    Route::get('/seller/products/images/{id}', fn()=>view('seller.products.images'));
+
+    Route::get('/seller/orders', fn()=>view('seller.orders.index'));
+    Route::get('/seller/orders/{id}', fn()=>view('seller.orders.detail'));
+
+    Route::get('/seller/balance', fn()=>view('seller.balance.index'));
+    Route::get('/seller/balance/history', fn()=>view('seller.balance.history'));
+
+    Route::get('/seller/withdrawals', fn()=>view('seller.withdrawals.index'));
+    Route::get('/seller/withdrawals/create', fn()=>view('seller.withdrawals.create'));
+});
+
+
+// admin
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/dashboard', fn()=>view('admin.dashboard'));
+    Route::get('/admin/verification', fn()=>view('admin.verification.index'));
+    Route::get('/admin/users', fn()=>view('admin.users.index'));
+    Route::get('/admin/users/{id}', fn()=>view('admin.users.detail'));
+});
+
+//payment
+Route::get('/payment', fn()=>view('payment.index'));
+Route::get('/payment/confirm', fn()=>view('payment.confirm'));
+Route::get('/payment/result', fn()=>view('payment.result'));
+
+
