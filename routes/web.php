@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AdminVerificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SellerCategoryController;
 use App\Http\Controllers\SellerProductController;
@@ -62,12 +65,27 @@ Route::middleware(['auth', 'seller'])->group(function () {
 
 
 // admin
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/dashboard', fn()=>view('admin.dashboard'));
-    Route::get('/admin/verification', fn()=>view('admin.verification.index'));
-    Route::get('/admin/users', fn()=>view('admin.users.index'));
-    Route::get('/admin/users/{id}', fn()=>view('admin.users.detail'));
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])
+        ->name('dashboard');
+
+    Route::get('/users', [AdminUserController::class, 'index'])
+        ->name('users.index');
+
+    Route::get('/users/{id}', [AdminUserController::class, 'detail'])
+        ->name('users.detail');
+
+    Route::get('/tioverifican', [AdminVerificationController::class, 'index'])
+        ->name('verification.index');
+
+    Route::post('/verification/{id}/approve', [AdminVerificationController::class, 'approve'])
+        ->name('verification.approve');
+
+    Route::post('/verification/{id}/reject', [AdminVerificationController::class, 'reject'])
+        ->name('verification.reject');
 });
+
 
 //payment
 Route::get('/payment', fn()=>view('payment.index'));
