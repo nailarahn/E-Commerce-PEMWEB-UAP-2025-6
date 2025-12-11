@@ -121,7 +121,7 @@
                 <div class="swiper-slide">
                     <div class="rounded-2xl flex flex-col md:flex-row items-center p-10 h-full 
                         bg-cover bg-center"
-                    style="background-image: url('/assets/images/benerr.jpg');">
+                    style="background-image: url('/assets/images/2.bener.jpg');">
 
                         <!-- IMAGE -->
                         <div class="w-full md:w-1/2 flex justify-center">
@@ -187,7 +187,7 @@
                     <p class="mt-1 font-bold">Rp. {{ $p['price'] }}</p>
 
                     <button class="mt-3 w-full py-2 bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
-                        Detail Produk
+                        Product Details
                     </button>
                 </div>
             @endforeach
@@ -204,7 +204,7 @@
 
             <div>
                 <h3 class="text-2xl font-semibold text-[#516c5d]">Limited Edition Gift</h3>
-                <p class="mt-2 text-gray-600">SAVE 10% on exclusive skincare + soft cream bundle.</p>
+                <p class="mt-2 text-gray-600">SAVE 10% on exclusive skincare + Ceramic Skin Saviour Moisturizer Gel.</p>
 
                 <a href="#"
                    class="mt-4 inline-block bg-[#8BAE8E] text-white px-6 py-3 rounded-lg hover:opacity-90">
