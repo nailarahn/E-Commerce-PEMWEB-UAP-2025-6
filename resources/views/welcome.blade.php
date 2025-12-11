@@ -223,7 +223,7 @@
             
             @php
                 $categories = [
-                    ['slug' => 'facewash', 'img' => 'facewash.jpg', 'name' => 'Face Wash'],
+                    ['slug' => 'facewash', 'img' => 'facewash.jpg', 'name' => 'Cleanser'],
                     ['img' => 'toner.jpg', 'name' => 'Toner'],
                     ['img' => 'serum.jpg', 'name' => 'Serum'],
                     ['img' => 'moisturizer.jpg', 'name' => 'Moisturizer'],
@@ -304,7 +304,7 @@
         <!-- BOTTOM COPYRIGHT -->
         <div class="max-w-7xl mx-auto px-6 mt-10 flex flex-col md:flex-row justify-between text-gray-500 text-sm border-t border-gray-200 pt-4">
             <p>Jl. Mawar 21, Malang, Indonesia</p>
-            <p>© 2025 Lovellea. All rights reserved</p>
+            <p>© 2025 Lovellea, Made With Love</p>
         </div>
     </footer>
 
