@@ -24,103 +24,135 @@
             <!-- HOME -->
             <a href="#" class="hover:text-[#8BAE8E]">Home</a>
 
-            <!-- ABOUT -->
-            <div x-data="{ open:false }" class="relative">
-                <button @mouseenter="open = true"
-                        @click.away="open=false"
-                        class="hover:text-[#8BAE8E] flex items-center gap-1">
+            <!-- ABOUT DROPDOWN (CLICK, bukan hover) -->
+            <div x-data="{ open: false }" class="relative">
+
+                <button @click="open = !open"
+                        class="hover:text-[#8BAE8E] flex items-center gap-1 select-none">
+
                     About
-                    <svg class="w-3 h-3 mt-0.5" fill="none" stroke="#8BAE8E" stroke-width="2" viewBox="0 0 24 24">
+
+                    <!-- Icon aesthetic -->
+                    <svg class="w-3 h-3 mt-0.5 transition-transform"
+                        :class="open ? 'rotate-180' : ''"
+                        fill="none" stroke="#8BAE8E" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
                     </svg>
 </button>
 
-                <div x-show="open" x-transition
-                     @mouseenter="open=true"
-                     class="absolute left-0 mt-2 w-40 bg-white shadow-lg border rounded-md py-2 z-50">
+    <!-- Dropdown -->
+    <div x-show="open"
+         @click.away="open = false"
+         x-transition
+         class="absolute left-0 mt-2 w-44 bg-white shadow-lg border rounded-md py-2 z-50">
 
-                    <a class="block px-4 py-2 hover:bg-gray-100" href="#">Company</a>
-                    <a class="block px-4 py-2 hover:bg-gray-100" href="#">Teams</a>
-                    <a class="block px-4 py-2 hover:bg-gray-100" href="#">FAQ</a>
-                </div>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-gray-700">Company</a>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-gray-700">Teams</a>
+        <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-gray-700">FAQ</a>
+
+    </div>
+</div>
+
+<!-- ALL PRODUCT DROPDOWN -->
+<div x-data="{ open: false }" class="relative">
+
+    <!-- Trigger -->
+    <button @click="open = !open"
+        class="hover:text-[#8BAE8E] flex items-center gap-1 select-none">
+
+        All Product
+        <svg class="w-3 h-3 mt-0.5 transition-transform"
+            :class="open ? 'rotate-180' : ''"
+            fill="none" stroke="#8BAE8E" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
+        </svg>
+    </button>
+
+    <!-- MAIN DROPDOWN -->
+    <div x-show="open"
+         @click.away="open = false"
+         class="absolute left-0 mt-2 bg-white shadow-xl border rounded-xl w-64 py-4 px-2 z-[9999]">
+
+        <!-- CLEANER -->
+        <div class="relative" x-data="{ openSub:false }">
+            <button @click.stop="openSub = !openSub"
+                class="w-full px-3 py-2 flex justify-between items-center hover:bg-gray-50 rounded-md">
+                Cleanser
+                <span>›</span>
+            </button>
+
+            <div x-show="openSub"
+                 class="absolute top-0 left-full ml-2 w-60 bg-white shadow-xl border rounded-xl p-4 z-[9999]">
+                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Skintific 5X Ceramide</a>
+                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Cosrx Good Morning Gel</a>
             </div>
+        </div>
 
-            <!-- ALL PRODUCT -->
-            <div x-data="{ open:false, sub:'' }" class="relative">
+        <!-- TONER -->
+        <div class="relative" x-data="{ openSub:false }">
+            <button 
+                x-ref="tonerBtn"
+                @click.stop="openSub = !openSub"
+                class="w-full px-3 py-2 flex justify-between items-center hover:bg-gray-50 rounded-md">
+                Toner
+                <span>›</span>
+            </button>
 
-                <button @mouseenter="open = true"
-                        @click.away="open=false"
-                        class="hover:text-[#8BAE8E] flex items-center gap-1">
-
-                    All Product
-                    <svg class="w-3 h-3 mt-0.5" fill="none" stroke="#8BAE8E" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6" />
-                    </svg>
-                </button>
-
-                <!-- Main Panel -->
-                <div x-show="open" x-transition
-                     @mouseenter="open=true"
-                     class="absolute left-0 mt-2 bg-white shadow-xl border rounded-xl w-64 py-4 px-2 z-50">
-
-                    <div class="space-y-1">
-
-                        <!-- CLEANSER -->
-                        <div class="relative">
-                            <button @mouseenter="sub='cleanser'"
-                                    class="w-full flex justify-between px-3 py-2 hover:bg-gray-50 rounded-md">
-                                Cleanser <span>›</span>
-                            </button>
-
-                            <div x-show="sub==='cleanser'"
-                                 @mouseenter="sub='cleanser'"
-                                 x-transition
-                                 class="absolute top-0 left-full ml-2 bg-white w-60 shadow-xl border rounded-xl p-4">
-
-                                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Calming Cleansing Stick</a>
-                                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Clarifying Cleansing Mousse</a>
-                            </div>
-                        </div>
-
-                        <!-- MOISTURIZER -->
-                        <div class="relative">
-                            <button @mouseenter="sub='moist'"
-                                    class="w-full flex justify-between px-3 py-2 hover:bg-gray-50 rounded-md">
-                                Moisturizer <span>›</span>
-                            </button>
-
-                            <div x-show="sub==='moist'"
-                                 @mouseenter="sub='moist'"
-                                 x-transition
-                                 class="absolute top-0 left-full ml-2 bg-white w-60 shadow-xl border rounded-xl p-4">
-
-                                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Hydra Glow Gel</a>
-                                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Deep Moist Cream</a>
-                            </div>
-                        </div>
-
-                        <!-- SERUM -->
-                        <div class="relative">
-                            <button @mouseenter="sub='serum'"
-                                    class="w-full flex justify-between px-3 py-2 hover:bg-gray-50 rounded-md">
-                                Serum <span>›</span>
-                            </button>
-
-                            <div x-show="sub==='serum'"
-                                 @mouseenter="sub='serum'"
-                                 x-transition
-                                 class="absolute top-0 left-full ml-2 bg-white w-60 shadow-xl border rounded-xl p-4">
-
-                                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Brightening Serum</a>
-                                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Repair Booster</a>
-                            </div>
-                        </div>
-
-                        <a class="block px-3 py-2 hover:bg-gray-50 rounded-md" href="#">Bundles</a>
-
-                    </div>
-                </div>
+            <div x-show="openSub"
+                :style="`top:${$refs.tonerBtn.offsetTop}px`"
+                class="absolute left-full ml-2 w-60 bg-white shadow-xl border rounded-xl p-4 z-[9999]">
+                <a class="block py-1 hover:text-[#8BAE8E]" href="#">SUPERTONER Glow Maker</a>
+                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Wardah Lightening Face Toner</a>
             </div>
+        </div>
+
+        <!-- SERUM -->
+        <div class="relative" x-data="{ openSub:false }">
+            <button @click.stop="openSub = !openSub"
+                class="w-full px-3 py-2 flex justify-between items-center hover:bg-gray-50 rounded-md">
+                Serum
+                <span>›</span>
+            </button>
+
+            <div x-show="openSub"
+                 class="absolute top-0 left-full ml-2 w-60 bg-white shadow-xl border rounded-xl p-4 z-[9999]">
+                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Avoskin YSB Niacinamide 12%</a>
+                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Glad2Glow Peach Retinol Serum</a>
+            </div>
+        </div>
+
+        <!-- MOISTURIZER -->
+        <div class="relative" x-data="{ openSub:false }">
+            <button @click.stop="openSub = !openSub"
+                class="w-full px-3 py-2 flex justify-between items-center hover:bg-gray-50 rounded-md">
+                Moisturizer
+                <span>›</span>
+            </button>
+
+            <div x-show="openSub"
+                 class="absolute top-0 left-full ml-2 w-60 bg-white shadow-xl border rounded-xl p-4 z-[9999]">
+                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Skintific MSH Niacinamide</a>
+                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Somethinc Ceramic Skin Saviour</a>
+            </div>
+        </div>
+
+        <!-- SUNSCREEN -->
+        <div class="relative" x-data="{ openSub:false }">
+            <button @click.stop="openSub = !openSub"
+                class="w-full px-3 py-2 flex justify-between items-center hover:bg-gray-50 rounded-md">
+                Sunscreen
+                <span>›</span>
+            </button>
+
+            <div x-show="openSub"
+                 class="absolute top-0 left-full ml-2 w-60 bg-white shadow-xl border rounded-xl p-4 z-[9999]">
+                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Azarine Hydrasoothe SPF45</a>
+                <a class="block py-1 hover:text-[#8BAE8E]" href="#">Skin Aqua UV Moisture SPF50</a>
+            </div>
+        </div>
+
+    </div>
+</div>
 
             <a href="#" class="hover:text-[#8BAE8E]">History</a>
             <a href="#" class="hover:text-[#8BAE8E]">Topup</a>
