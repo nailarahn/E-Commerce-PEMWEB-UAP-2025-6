@@ -8,9 +8,9 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-white">
+<body class="bg-[#fdf7f7] text-gray-800">
 
-<header class="w-full py-4 bg-white shadow-sm">
+<header class="fixed top-0 left-0 w-full py-4 bg-white shadow-sm z-50">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-6">
 
         <!-- Logo -->
@@ -43,39 +43,49 @@
                       d="M6.5 10h11l-1 10.5H7.5L6.5 10zM9 6.5A3 3 0 1115 6.5v3.5H9V6.5z" />
             </svg>
 
-            <!-- USER -->
+            <!-- USER DROPDOWN -->
             <div x-data="{ open:false }" class="relative">
-                <svg @click="open = !open"
-                     xmlns="http://www.w3.org/2000/svg" fill="none"
-                     viewBox="0 0 24 24" stroke-width="1.6"
-                     stroke="#1f3b5a" class="w-7 h-7 cursor-pointer">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M15.75 7.5a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 1115 0v.75H4.5v-.75z" />
-                </svg>
 
+                <!-- ICON USER -->
+                <button @click="open = !open" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke-width="1.6"
+                         stroke="#1f3b5a" class="w-7 h-7 cursor-pointer">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M15.75 7.5a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 1115 0v.75H4.5v-.75z" />
+                    </svg>
+                </button>
+
+                <!-- DROPDOWN -->
                 <div x-show="open"
                      x-transition
-                     @click.away="open=false"
-                     class="absolute right-0 mt-3 w-40 bg-white rounded-md shadow-md border py-2 z-50">
+                     @click.away="open = false"
+                     class="absolute right-0 mt-3 w-44 bg-white shadow-lg border rounded-lg py-2 z-50">
 
                     <a href="{{ route('profile.edit') }}"
-                       class="block px-4 py-2 hover:bg-gray-100">Profile</a>
+                       class="block px-4 py-2 hover:bg-gray-100">
+                        Profile
+                    </a>
 
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button class="w-full text-left px-4 py-2 hover:bg-gray-100">Logout</button>
+                        <button class="w-full text-left px-4 py-2 hover:bg-gray-100">
+                            Logout
+                        </button>
                     </form>
-
                 </div>
-            </div>
-        </div>
 
+            </div>
+
+        </div>
     </div>
 </header>
 
 <main>
     @yield('content')
 </main>
+
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
 </body>
 </html>
