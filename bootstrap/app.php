@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         'admin' => \App\Http\Middleware\AdminOnly::class,
         'seller' => \App\Http\Middleware\SellerOnly::class,
+        'member' => \App\Http\Middleware\CustomerOnly::class
     ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -25,45 +25,29 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // customer
-Route::get('/home', function () {
-    return view('customer.home');
-})->name('customer.home')->middleware('auth');
+use App\Http\Controllers\Customer\{
+    CustomerHomeController,
+    CustomerProductController,
+    CustomerCheckoutController,
+    CustomerHistoryController,
+    CustomerWalletController
+};
 
-Route::middleware('auth')->group(function () {
-    Route::get('/home', fn()=>view('customer.home'))->name('customer.home');
-});
+Route::middleware(['auth', 'member'])->group(function () {
 
-Route::get('/product/{slug}', fn()=>view('customer.product'));
+    Route::get('/home', [CustomerHomeController::class, 'index'])->name('customer.home');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/checkout', fn()=>view('customer.checkout'));
-    Route::get('/history', fn()=>view('customer.history'));
+    Route::get('/product/{slug}', [CustomerProductController::class, 'show'])->name('customer.product');
 
-    Route::get('/wallet/topup', fn()=>view('customer.wallet.topup'));
-    Route::get('/wallet/success', fn()=>view('customer.wallet.success'));
-});
+    Route::get('/checkout', [CustomerCheckoutController::class, 'index'])->name('customer.checkout');
+    Route::post('/checkout', [CustomerCheckoutController::class, 'process'])->name('customer.checkout.process');
 
-//seller
-Route::middleware(['auth', 'seller'])->group(function () {
+    Route::get('/history', [CustomerHistoryController::class, 'index'])->name('customer.history');
 
-    Route::get('/seller/dashboard', fn()=>view('seller.dashboard'));
+    Route::get('/wallet/topup', [CustomerWalletController::class, 'topup'])->name('customer.wallet.topup');
+    Route::post('/wallet/topup', [CustomerWalletController::class, 'submitTopup'])->name('customer.wallet.submit');
+    Route::get('/wallet/success/{id}', [CustomerWalletController::class, 'success'])->name('customer.wallet.success');
 
-    Route::get('/store/register', fn()=>view('seller.store.register'));
-    Route::get('/seller/profile', fn()=>view('seller.store.profile'));
-
-    Route::resource('/seller/categories', SellerCategoryController::class)->only(['index','create','edit']);
-
-    Route::resource('/seller/products', SellerProductController::class)->only(['index','create','edit']);
-    Route::get('/seller/products/images/{id}', fn()=>view('seller.products.images'));
-
-    Route::get('/seller/orders', fn()=>view('seller.orders.index'));
-    Route::get('/seller/orders/{id}', fn()=>view('seller.orders.detail'));
-
-    Route::get('/seller/balance', fn()=>view('seller.balance.index'));
-    Route::get('/seller/balance/history', fn()=>view('seller.balance.history'));
-
-    Route::get('/seller/withdrawals', fn()=>view('seller.withdrawals.index'));
-    Route::get('/seller/withdrawals/create', fn()=>view('seller.withdrawals.create'));
 });
 
 
