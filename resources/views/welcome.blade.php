@@ -171,9 +171,9 @@
             @php
                 $products = [
                     ['img' => '2/Cosrx-cleanser.jpg', 'name' => 'Cosrx', 'desc' => 'Low pH Good Morning Gel Cleanser', 'price' => '130.000'],
-                    ['img' => '3/Somethinc-Toner.jpg', 'name' => 'Somethinc Glow Maker', 'desc' => 'AHA BHA PHA Clarifying Toner', 'price' => '119.000'],
-                    ['img' => '6/Retinol-Serum.png', 'name' => 'Glad2Glow', 'desc' => 'Peach Retinol Serum', 'price' => '38.000'],
-                    ['img' => '7/Skintific-moist.png', 'name' => 'Skintific MSH Niacinamide', 'desc' => 'Brightening Moisture Gel', 'price' => '140.000']
+                    ['img' => '7/SKIN1004-toner.png', 'name' => 'SKIN1004', 'desc' => 'Madagascar Centella Toning Toner', 'price' => '144.500'],
+                    ['img' => '11/BoJ-serum.png', 'name' => 'Beauty of Josoen', 'desc' => 'Greentea Calming Serum', 'price' => '125.300'],
+                    ['img' => '15/From This Island-mois.png', 'name' => 'From This Island', 'desc' => 'Papua Red Fruit Plumping Cream', 'price' => '220.150']
                 ];
             @endphp
 
@@ -199,12 +199,12 @@
     <section class="max-w-7xl mx-auto px-6 mt-16">
         <div class="bg-[#feeef5] rounded-xl p-10 flex flex-col md:flex-row items-center gap-10">
 
-            <img src="/assets/images/products/8/Somethinc-moist.jpg"
+            <img src="assets/images/products/10/Retinol-Serum.png"
                  class="h-48 rounded-xl object-cover">
 
             <div>
                 <h3 class="text-2xl font-semibold text-[#516c5d]">Limited Edition Gift</h3>
-                <p class="mt-2 text-gray-600">SAVE 10% on exclusive skincare + Ceramic Skin Saviour Moisturizer Gel.</p>
+                <p class="mt-2 text-gray-600">SAVE 10% on exclusive skincare + Peach Retinol Serum.</p>
 
                 <a href="#"
                    class="mt-4 inline-block bg-[#8BAE8E] text-white px-6 py-3 rounded-lg hover:opacity-90">
@@ -255,13 +255,13 @@
     </script>
 
     <!-- FOOTER -->
-    <footer class="bg-white mt-20 pt-12 pb-6 border-t border-gray-200">
+    <footer class="bg-[#8BAE8E] text-white mt-20 pt-12 pb-6 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
 
             <!-- ABOUT -->
             <div>
-                <h4 class="font-bold text-gray-700 mb-3">ABOUT</h4>
-                <ul class="space-y-2 text-gray-600 text-sm">
+                <h4 class="font-bold mb-3">ABOUT</h4>
+                <ul class="space-y-2 text-sm">
                     <li><a href="#" class="hover:text-[#8BAE8E]">Company</a></li>
                     <li><a href="#" class="hover:text-[#8BAE8E]">Community</a></li>
                     <li><a href="#" class="hover:text-[#8BAE8E]">Careers</a></li>
@@ -270,8 +270,8 @@
 
             <!-- BLOG -->
             <div>
-                <h4 class="font-bold text-gray-700 mb-3">BLOG</h4>
-                <ul class="space-y-2 text-gray-600 text-sm">
+                <h4 class="font-bold mb-3">BLOG</h4>
+                <ul class="space-y-2 text-sm">
                     <li><a href="#" class="hover:text-[#8BAE8E]">Tech</a></li>
                     <li><a href="#" class="hover:text-[#8BAE8E]">Music</a></li>
                     <li><a href="#" class="hover:text-[#8BAE8E]">Video</a></li>
@@ -280,8 +280,8 @@
 
             <!-- PRODUCTS -->
             <div>
-                <h4 class="font-bold text-gray-700 mb-3">PRODUCTS</h4>
-                <ul class="space-y-2 text-gray-600 text-sm">
+                <h4 class="font-bold mb-3">PRODUCTS</h4>
+                <ul class="space-y-2 text-sm">
                     <li><a href="#" class="hover:text-[#8BAE8E]">Lovellea App</a></li>
                     <li><a href="#" class="hover:text-[#8BAE8E]">Lovellea Desktop</a></li>
                     <li><a href="#" class="hover:text-[#8BAE8E]">Lovellea Cloud</a></li>
@@ -290,10 +290,10 @@
 
             <!-- LOGO + SOCIAL -->
             <div class="flex flex-col items-start md:items-end">
-                <img src="/assets/images/logo.png" class="h-14 mb-2" alt="Lovellea Logo">
-                <p class="text-gray-600 text-sm mb-4">It's all about your beauty</p>
+                <img src="/assets/images/bg-remove.png" class="h-20 mb-2" alt="Lovellea Logo">
+                <p class="text-sm mb-4">It's all about your beauty</p>
 
-                <div class="flex gap-4 text-gray-500 text-xl">
+                <div class="flex gap-4 text-xl">
                     <a href="#"><i class="fa-brands fa-facebook hover:text-[#8BAE8E]"></i></a>
                     <a href="#"><i class="fa-brands fa-twitter hover:text-[#8BAE8E]"></i></a>
                     <a href="#"><i class="fa-brands fa-instagram hover:text-[#8BAE8E]"></i></a>
@@ -302,7 +302,7 @@
         </div>
 
         <!-- BOTTOM COPYRIGHT -->
-        <div class="max-w-7xl mx-auto px-6 mt-10 flex flex-col md:flex-row justify-between text-gray-500 text-sm border-t border-gray-200 pt-4">
+        <div class="max-w-7xl mx-auto px-6 mt-10 flex flex-col md:flex-row justify-between text-sm border-t border-gray-200 pt-4">
             <p>Jl. Mawar 21, Malang, Indonesia</p>
             <p>© 2025 Lovellea, Made With Love</p>
         </div>

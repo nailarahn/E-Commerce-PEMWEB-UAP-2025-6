@@ -7,7 +7,6 @@
     <img src="/assets/images/barenbliss.jpg"
          class="w-full h-[650px] object-cover opacity-90">
 
-    <!-- Hanya tombol -->
     <a href="#"
        class="absolute left-10 lg:left-20 bottom-24 bg-white px-8 py-3 text-lg font-semibold rounded-md shadow hover:bg-gray-100 w-max">
         BUY NOW
@@ -22,7 +21,9 @@
         @php
             $products = [
                 ['img' => '1/Skintific-cleanser.png', 'name' => 'Skintific', 'desc' => 'Skintific 5X Ceramide Low pH Cleanser', 'price' => '65.000'],
-                ['img' => '2/Cosrx-cleanser.jpg', 'name' => 'Cosrx', 'desc' => 'Low pH Good Morning Gel Cleanser', 'price' => '130.000']
+                ['img' => '2/Cosrx-cleanser.jpg', 'name' => 'Cosrx', 'desc' => 'Low pH Good Morning Gel Cleanser', 'price' => '130.000'],
+                ['img' => '3/harlette-cleanser.png', 'name' => 'Harlette', 'desc' => 'Oatmilk Gentle Facial Wash', 'price' => '86.000'],
+                ['img' => '4/Skin Game-cleanser.png', 'name' => 'Skin Game', 'desc' => 'Kind Hydrating Facial Wash', 'price' => '124.000']
             ];
         @endphp
 
@@ -51,8 +52,10 @@
 
         @php
             $products = [
-                ['img' => '3/Somethinc-Toner.jpg', 'name' => 'Somethinc Glow Maker', 'desc' => 'AHA BHA PHA Clarifying Toner', 'price' => '119.000'],
-                ['img' => '4/Lightening-Toner.jpg', 'name' => 'Wardah', 'desc' => 'Lightening Face Toner', 'price' => '23.000']
+                ['img' => '5/Avoskin-toner.png', 'name' => 'Avoskin', 'desc' => 'Miraculous Refining Toner', 'price' => '173.000'],
+                ['img' => '6/Pyunkang Yul-toner.jpg', 'name' => 'Pyunkang Yul', 'desc' => 'Essence Toner', 'price' => '110.000'],
+                ['img' => '7/SKIN1004-toner.png', 'name' => 'SKIN1004', 'desc' => 'Madagascar Centella Toning Toner', 'price' => '144.500'],
+                ['img' => '8/Anua-toner.png', 'name' => 'Anua', 'desc' => 'Heartleaf 77% Soothing Toner', 'price' => '247.500']
             ];
         @endphp
 
@@ -81,8 +84,10 @@
 
         @php
             $products = [
-                ['img' => '5/Niacinamid-Serum.jpg', 'name' => 'Avoskin YSB', 'desc' => 'Niacinamide 12%', 'price' => '115.000'],
-                ['img' => '6/Retinol-Serum.png', 'name' => 'Glad2Glow', 'desc' => 'Peach Retinol Serum', 'price' => '38.000']
+                ['img' => '9/Avoskin-serum.png', 'name' => 'Avoskin YSB', 'desc' => 'Niacinamide 12%', 'price' => '115.000'],
+                ['img' => '10/Retinol-Serum.png', 'name' => 'Glad2Glow', 'desc' => 'Peach Retinol Serum', 'price' => '38.000'],
+                ['img' => '11/BoJ-serum.png', 'name' => 'Beauty of Josoen', 'desc' => 'Greentea Calming Serum', 'price' => '125.300'],
+                ['img' => '12/elformula-serum.png', 'name' => 'Elformula', 'desc' => 'Intensive Peeling Solution', 'price' => '161.280']
             ];
         @endphp
 
@@ -111,8 +116,10 @@
 
         @php
             $products = [
-                ['img' => '7/Skintific-moist.png', 'name' => 'Skintific MSH Niacinamide', 'desc' => 'Brightening Moisture Gel', 'price' => '140.000'],
-                ['img' => '8/Somethinc-moist.jpg', 'name' => 'Somethinc', 'desc' => 'Ceramic Skin Saviour Moisturizer Gel', 'price' => '299.000']
+                ['img' => '13/Innisfree-moist.png', 'name' => 'Innisfree', 'desc' => 'Green Tea Ceramide Bounce Cream', 'price' => '368.900'],
+                ['img' => '14/Laneige-moist.png', 'name' => 'Laneige', 'desc' => 'Bouncy & Firm Sleeping Mask', 'price' => '397.500'],
+                ['img' => '15/From This Island-mois.png', 'name' => 'From This Island', 'desc' => 'Papua Red Fruit Plumping Cream', 'price' => '220.150'],
+                ['img' => '16/SKIN1004-moist.png', 'name' => 'SKIN1004', 'desc' => 'Madagascar Centella Cream', 'price' => '149.600']
             ];
         @endphp
 
@@ -141,8 +148,10 @@
 
         @php
             $products = [
-                ['img' => '9/Azarine-sunscreen.jpg', 'name' => 'Azarine Hydrasoothe', 'desc' => 'Sunscreen Gel SPF45', 'price' => '49.000'],
-                ['img' => '10/SkinAqua-sunscreen.jpg', 'name' => 'Skin Aqua', 'desc' => 'UV Moisture Milk SPF50', 'price' => '48.000']
+                ['img' => '17/Labore-sunscreen.png', 'name' => 'Labore Acne & Oil', 'desc' => 'Physical Sunscreen SPF50+', 'price' => '185.000'],
+                ['img' => '18/Wardah-sunscreen.png', 'name' => 'Wardah UV Shield Acne', 'desc' => 'Sunscreen Moisturizer SPF35', 'price' => '39.500'],
+                ['img' => '19/avoskin-sunscreen.webp', 'name' => 'Avoskin', 'desc' => 'The Great Shield SPF50', 'price' => '135.000'],
+                ['img' => '20/harlette-sunscreen.png', 'name' => 'Harlette', 'desc' => 'Oat Probiotic Sunscreen SPF 50', 'price' => '153.000']
             ];
         @endphp
 
@@ -165,13 +174,13 @@
 </section>
 
     <!-- FOOTER -->
-    <footer class="bg-white mt-20 pt-12 pb-6 border-t border-gray-200">
+    <footer class="bg-[#8BAE8E] text-white mt-20 pt-12 pb-6 border-t border-gray-200">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
 
             <!-- ABOUT -->
             <div>
-                <h4 class="font-bold text-gray-700 mb-3">ABOUT</h4>
-                <ul class="space-y-2 text-gray-600 text-sm">
+                <h4 class="font-bold mb-3">ABOUT</h4>
+                <ul class="space-y-2 text-sm">
                     <li><a href="#" class="hover:text-[#8BAE8E]">Company</a></li>
                     <li><a href="#" class="hover:text-[#8BAE8E]">Community</a></li>
                     <li><a href="#" class="hover:text-[#8BAE8E]">Careers</a></li>
@@ -180,8 +189,8 @@
 
             <!-- BLOG -->
             <div>
-                <h4 class="font-bold text-gray-700 mb-3">BLOG</h4>
-                <ul class="space-y-2 text-gray-600 text-sm">
+                <h4 class="font-bold mb-3">BLOG</h4>
+                <ul class="space-y-2 text-sm">
                     <li><a href="#" class="hover:text-[#8BAE8E]">Tech</a></li>
                     <li><a href="#" class="hover:text-[#8BAE8E]">Music</a></li>
                     <li><a href="#" class="hover:text-[#8BAE8E]">Video</a></li>
@@ -190,8 +199,8 @@
 
             <!-- PRODUCTS -->
             <div>
-                <h4 class="font-bold text-gray-700 mb-3">PRODUCTS</h4>
-                <ul class="space-y-2 text-gray-600 text-sm">
+                <h4 class="font-bold mb-3">PRODUCTS</h4>
+                <ul class="space-y-2 text-sm">
                     <li><a href="#" class="hover:text-[#8BAE8E]">Lovellea App</a></li>
                     <li><a href="#" class="hover:text-[#8BAE8E]">Lovellea Desktop</a></li>
                     <li><a href="#" class="hover:text-[#8BAE8E]">Lovellea Cloud</a></li>
@@ -200,10 +209,10 @@
 
             <!-- LOGO + SOCIAL -->
             <div class="flex flex-col items-start md:items-end">
-                <img src="/assets/images/logo.png" class="h-14 mb-2" alt="Lovellea Logo">
-                <p class="text-gray-600 text-sm mb-4">It's all about your beauty</p>
+                <img src="/assets/images/bg-remove.png" class="h-20 mb-2" alt="Lovellea Logo">
+                <p class="text-sm mb-4">It's all about your beauty</p>
 
-                <div class="flex gap-4 text-gray-500 text-xl">
+                <div class="flex gap-4 text-xl">
                     <a href="#"><i class="fa-brands fa-facebook hover:text-[#8BAE8E]"></i></a>
                     <a href="#"><i class="fa-brands fa-twitter hover:text-[#8BAE8E]"></i></a>
                     <a href="#"><i class="fa-brands fa-instagram hover:text-[#8BAE8E]"></i></a>
@@ -212,7 +221,7 @@
         </div>
 
         <!-- BOTTOM COPYRIGHT -->
-        <div class="max-w-7xl mx-auto px-6 mt-10 flex flex-col md:flex-row justify-between text-gray-500 text-sm border-t border-gray-200 pt-4">
+        <div class="max-w-7xl mx-auto px-6 mt-10 flex flex-col md:flex-row justify-between text-sm border-t border-gray-200 pt-4">
             <p>Jl. Mawar 21, Malang, Indonesia</p>
             <p>© 2025 Lovellea, Made With Love</p>
         </div>
