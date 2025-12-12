@@ -17,10 +17,13 @@ Route::get('/', function () {
 })->middleware('guest');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');      // halaman profil
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit'); // form edit profil
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update'); // update data
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy'); // hapus akun
 });
+
 
 require __DIR__.'/auth.php';
 
