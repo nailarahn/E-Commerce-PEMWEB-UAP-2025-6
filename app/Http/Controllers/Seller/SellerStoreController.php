@@ -49,29 +49,33 @@ class SellerStoreController extends Controller
         return redirect()->route('seller.dashboard')->with('success', 'Toko berhasil dibuat!');
     }
 
-    public function profile()
+    public function edit()
     {
         $store = Auth::user()->store;
         return view('seller.store.profile', compact('store'));
     }
 
-    public function updateProfile(Request $request)
-    {
-        $store = Auth::user()->store;
+    public function update(Request $request)
+{
+    $store = Auth::user()->store;
 
-        $request->validate([
-            'name' => 'required',
-            'about' => 'required',
-            'phone' => 'required',
-        ]);
+    $request->validate([
+        'name' => 'required',
+        'about' => 'required',
+        'phone' => 'required',
+    ]);
 
-        if ($request->hasFile('logo')) {
-            Storage::disk('public')->delete($store->logo);
-            $store->logo = $request->file('logo')->store('stores/logo', 'public');
-        }
-
-        $store->update($request->only(['name','about','phone','city','address','postal_code']));
-
-        return back()->with('success', 'Profil toko diperbarui!');
+    if ($request->hasFile('logo')) {
+        Storage::disk('public')->delete($store->logo);
+        $store->logo = $request->file('logo')->store('stores/logo', 'public');
     }
+
+    $store->update($request->only([
+        'name', 'about', 'phone', 'city', 'address', 'postal_code'
+    ]));
+
+    return back()->with('success', 'Profil toko diperbarui!');
+}
+
+
 }

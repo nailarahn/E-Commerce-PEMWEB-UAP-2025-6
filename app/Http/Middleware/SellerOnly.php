@@ -16,7 +16,9 @@ class SellerOnly
     public function handle(Request $request, Closure $next): Response
     {
         if (!auth()->check() || auth()->user()->role !== 'seller') {
-            abort(403);
+            if (!auth()->user()->store) {
+                return redirect('/store/register');
+            }
         }
 
         return $next($request);

@@ -104,7 +104,7 @@ Route::middleware(['auth', 'admin'])
 // ===================================================
 // SELLER
 // ===================================================
-Route::middleware(['auth', 'SellerOnly'])
+Route::middleware(['auth', 'seller'])
     ->prefix('seller')
     ->name('seller.')
     ->group(function () {
@@ -121,7 +121,8 @@ Route::middleware(['auth', 'SellerOnly'])
         Route::get('/store/profile', [SellerStoreController::class, 'edit'])
             ->name('store.profile');
         Route::put('/store/profile', [SellerStoreController::class, 'update'])
-            ->name('store.profile.update');
+        ->name('store.update');
+
 
 
         /*

@@ -12,7 +12,9 @@ class SellerProductController extends Controller
     // Menampilkan semua produk seller
     public function index()
     {
-        $products = Product::where('user_id', auth()->id())->get();
+        $storeId = auth()->user()->store->id;
+
+        $products = Product::where('store_id', $storeId)->get();
 
         return view('seller.products.index', compact('products'));
     }
@@ -20,8 +22,9 @@ class SellerProductController extends Controller
     // Form tambah produk
     public function create()
     {
-        // Ambil kategori milik seller
-        $categories = ProductCategory::where('user_id', auth()->id())->get();
+        $storeId = auth()->user()->store->id;
+
+        $categories = ProductCategory::all();
 
         return view('seller.products.create', compact('categories'));
     }
@@ -33,8 +36,9 @@ class SellerProductController extends Controller
             'name' => 'required|min:3|max:70',
             'price' => 'required|numeric',
             'stock' => 'required|integer|min:0',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'required|exists:product_categories,id',
             'image' => 'nullable|image|max:2048'
+
         ]);
 
         // Upload gambar
