@@ -63,7 +63,7 @@
                      @click.away="open = false"
                      class="absolute right-0 mt-3 w-44 bg-white shadow-lg border rounded-lg py-2 z-50">
 
-                    <a href="{{ route('profile.edit') }}"
+                    <a href="{{ route('profile.index') }}"
                        class="block px-4 py-2 hover:bg-gray-100">
                         Profile
                     </a>
@@ -77,7 +77,6 @@
                 </div>
 
             </div>
-
         </div>
     </div>
 </header>

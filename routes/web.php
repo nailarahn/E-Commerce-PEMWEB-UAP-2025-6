@@ -4,6 +4,12 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminVerificationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Seller\SellerBalanceController;
+use App\Http\Controllers\Seller\SellerDashboardController;
+use App\Http\Controllers\Seller\SellerOrderController;
+use App\Http\Controllers\Seller\SellerProductImageController;
+use App\Http\Controllers\Seller\SellerStoreController;
+use App\Http\Controllers\Seller\SellerWithdrawalController;
 use App\Http\Controllers\SellerCategoryController;
 use App\Http\Controllers\SellerProductController;
 use App\Http\Controllers\WalletController;
@@ -91,6 +97,104 @@ Route::middleware(['auth', 'admin'])
             ->name('verification.reject');
     });
 
+// ===================================================
+// SELLER
+// ===================================================
+Route::middleware(['auth', 'SellerOnly'])
+    ->prefix('seller')
+    ->name('seller.')
+    ->group(function () {
+
+        // Dashboard
+        Route::get('/dashboard', [SellerDashboardController::class, 'index'])
+            ->name('dashboard');
+
+        /*
+        |--------------------------------------------------------------------------
+        | STORE PROFILE (Folder: seller/store/)
+        |--------------------------------------------------------------------------
+        */
+        Route::get('/store/profile', [SellerStoreController::class, 'edit'])
+            ->name('store.profile');
+        Route::put('/store/profile', [SellerStoreController::class, 'update'])
+            ->name('store.profile.update');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | CATEGORIES (Folder: seller/categories/)
+        |--------------------------------------------------------------------------
+        */
+        Route::resource('/categories', SellerCategoryController::class)
+            ->names([
+                'index' => 'categories.index',
+                'create' => 'categories.create',
+                'store' => 'categories.store',
+                'edit' => 'categories.edit',
+                'update' => 'categories.update',
+                'destroy' => 'categories.destroy',
+            ])
+            ->except(['show']);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | PRODUCTS (Folder: seller/products/)
+        |--------------------------------------------------------------------------
+        */
+        Route::resource('/products', SellerProductController::class);
+
+        // khusus halaman images (seller/products/images.blade.php)
+        Route::get('/products/{product}/images', [SellerProductImageController::class, 'index'])
+            ->name('products.images');
+        Route::post('/products/{product}/images', [SellerProductImageController::class, 'store'])
+            ->name('products.images.store');
+        Route::delete('/products/images/{image}', [SellerProductImageController::class, 'destroy'])
+            ->name('products.images.destroy');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | ORDERS (Folder: seller/orders/)
+        |--------------------------------------------------------------------------
+        */
+        Route::get('/orders', [SellerOrderController::class, 'index'])
+            ->name('orders.index');
+
+        Route::get('/orders/{order}', [SellerOrderController::class, 'detail'])
+            ->name('orders.detail');
+
+        Route::put('/orders/{order}/status', [SellerOrderController::class, 'updateStatus'])
+            ->name('orders.updateStatus');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | BALANCE (Folder: seller/balance/)
+        |--------------------------------------------------------------------------
+        */
+        Route::get('/balance', [SellerBalanceController::class, 'index'])
+            ->name('balance.index');
+
+        Route::get('/balance/history', [SellerBalanceController::class, 'history'])
+            ->name('balance.history');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | WITHDRAWALS (Folder: seller/withdrawals/)
+        |--------------------------------------------------------------------------
+        */
+        Route::get('/withdrawals', [SellerWithdrawalController::class, 'index'])
+            ->name('withdrawals.index');
+
+        Route::get('/withdrawals/create', [SellerWithdrawalController::class, 'create'])
+            ->name('withdrawals.create');
+
+        Route::post('/withdrawals', [SellerWithdrawalController::class, 'store'])
+            ->name('withdrawals.store');
+
+    });
 
 // ===================================================
 // PAYMENT PAGES
