@@ -186,9 +186,11 @@
                     <p class="text-gray-500 text-sm">{{ $p['desc'] }}</p>
                     <p class="mt-1 font-bold">Rp. {{ $p['price'] }}</p>
 
-                    <button class="mt-3 w-full py-2 bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
+                    <a href="{{ route('login') }}"
+                        class="mt-3 w-full py-2 block text-center bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
                         Product Details
-                    </button>
+                    </a>
+
                 </div>
             @endforeach
 
@@ -206,8 +208,8 @@
                 <h3 class="text-2xl font-semibold text-[#516c5d]">Limited Edition Gift</h3>
                 <p class="mt-2 text-gray-600">SAVE 10% on exclusive skincare + Peach Retinol Serum.</p>
 
-                <a href="#"
-                   class="mt-4 inline-block bg-[#8BAE8E] text-white px-6 py-3 rounded-lg hover:opacity-90">
+                <a href="{{ route('login') }}"
+                    class="mt-4 inline-block bg-[#8BAE8E] text-white px-6 py-3 rounded-lg hover:opacity-90">
                     Shop now
                 </a>
             </div>
