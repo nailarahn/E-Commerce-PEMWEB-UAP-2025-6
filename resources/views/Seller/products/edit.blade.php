@@ -3,14 +3,35 @@
 @section('title','Edit Kategori')
 
 @section('content')
-<h1 class="text-2xl font-bold mb-4">Edit Kategori</h1>
 
-<form action="{{ route('seller.categories.update',$category->id) }}" method="POST">
-    @csrf @method('PUT')
+<div class="mb-6">
+    <h1 class="text-3xl font-semibold text-[#8BAE8E]">Edit Kategori</h1>
+</div>
 
-    <label>Nama Kategori</label>
-    <input type="text" name="name" value="{{ $category->name }}" class="w-full border p-2 rounded mb-4">
+<div class="bg-[#fdf7f7] shadow-sm rounded-2xl p-8 border border-[#e8e2e2]">
+    <form action="{{ route('seller.categories.update', $category->id) }}" method="POST" class="space-y-6">
+        @csrf
+        @method('PUT')
 
-    <button class="px-4 py-2 bg-green-600 text-white rounded">Update</button>
-</form>
+        {{-- Nama Kategori --}}
+        <div>
+            <label class="block mb-1 font-medium text-[#8BAE8E]">Nama Kategori</label>
+            <input 
+                type="text" 
+                name="name" 
+                value="{{ $category->name }}" 
+                class="w-full p-3 rounded-xl border border-[#dcdcdc] bg-white 
+                       focus:outline-none focus:ring-2 focus:ring-[#8BAE8E] text-gray-700"
+            >
+        </div>
+
+        {{-- Button --}}
+        <button 
+            class="px-6 py-3 rounded-xl bg-[#8BAE8E] text-white font-medium hover:bg-[#7aa080] transition"
+        >
+            Update
+        </button>
+    </form>
+</div>
+
 @endsection

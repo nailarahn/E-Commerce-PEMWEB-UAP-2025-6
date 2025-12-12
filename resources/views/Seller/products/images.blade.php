@@ -3,25 +3,51 @@
 @section('title','Gambar Produk')
 
 @section('content')
-<h1 class="text-2xl font-bold mb-4">Gambar Produk: {{ $product->name }}</h1>
 
-<form action="{{ route('seller.products.images.store',$product->id) }}" method="POST" enctype="multipart/form-data">
-    @csrf
+<div class="mb-6">
+    <h1 class="text-3xl font-semibold text-[#8BAE8E]">
+        Gambar Produk: {{ $product->name }}
+    </h1>
+</div>
 
-    <label>Tambah Gambar (Multiple)</label>
-    <input type="file" name="images[]" multiple class="w-full mb-4">
+{{-- Form Upload --}}
+<div class="bg-[#fdf7f7] shadow-sm rounded-2xl p-8 border border-[#e8e2e2] mb-8">
+    <form action="{{ route('seller.products.images.store', $product->id) }}" 
+          method="POST" enctype="multipart/form-data" class="space-y-6">
+        @csrf
 
-    <button class="px-4 py-2 bg-blue-600 text-white rounded">Upload</button>
-</form>
+        <div>
+            <label class="block mb-2 font-medium text-[#8BAE8E]">Tambah Gambar (Multiple)</label>
+            <input 
+                type="file" 
+                name="images[]" 
+                multiple
+                class="w-full text-gray-700"
+            >
+        </div>
 
-<div class="grid grid-cols-4 gap-4 mt-6">
+        <button class="px-6 py-3 rounded-xl bg-[#8BAE8E] text-white font-medium hover:bg-[#7aa080] transition">
+            Upload
+        </button>
+    </form>
+</div>
+
+{{-- Grid Gambar --}}
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     @foreach ($images as $img)
-        <div class="bg-white p-2 rounded shadow text-center">
-            <img src="{{ asset('storage/' . $img->image) }}" class="w-full h-32 object-cover rounded mb-2">
+        <div class="bg-white p-4 rounded-2xl shadow-sm flex flex-col items-center">
+            <img 
+                src="{{ asset('storage/' . $img->image) }}" 
+                class="w-full h-40 object-cover rounded-xl mb-4"
+            >
 
-            <form action="{{ route('seller.products.images.delete',[$product->id,$img->id]) }}" method="POST">
-                @csrf @method('DELETE')
-                <button class="px-3 py-1 bg-red-600 text-white rounded">Hapus</button>
+            <form action="{{ route('seller.products.images.delete', [$product->id, $img->id]) }}" 
+                  method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="px-4 py-2 rounded-xl bg-red-500 text-white font-medium hover:bg-red-600 transition">
+                    Hapus
+                </button>
             </form>
         </div>
     @endforeach

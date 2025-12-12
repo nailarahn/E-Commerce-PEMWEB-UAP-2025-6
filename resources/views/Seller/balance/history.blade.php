@@ -3,22 +3,48 @@
 @section('title','Riwayat Saldo')
 
 @section('content')
-<h1 class="text-2xl font-bold mb-4">Riwayat Saldo</h1>
 
-<table class="w-full bg-white rounded shadow">
-<tr>
-    <th class="p-2">Keterangan</th>
-    <th class="p-2">Jumlah</th>
-</tr>
+<div class="mb-8">
+    <h1 class="text-3xl font-semibold tracking-tight text-[#8BAE8E]">
+        Riwayat Saldo
+    </h1>
+    <p class="text-gray-500 text-sm mt-1">
+        Semua transaksi keluar dan masuk saldo toko.
+    </p>
+</div>
 
-@foreach ($transactions as $t)
-<tr class="border-b">
-    <td class="p-2">{{ $t->description }}</td>
-    <td class="p-2">Rp {{ number_format($t->amount) }}</td>
-</tr>
-@endforeach
+<div class="bg-white rounded-xl shadow-sm border border-[#e6e6e6] overflow-hidden">
 
-</table>
+    <table class="w-full text-left">
+        <thead class="bg-[#fafafa] border-b border-[#e6e6e6]">
+            <tr>
+                <th class="px-6 py-4 font-semibold text-[#8BAE8E]">Keterangan</th>
+                <th class="px-6 py-4 font-semibold text-[#8BAE8E]">Jumlah</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        @forelse ($transactions as $t)
+            <tr class="border-b border-[#f1f1f1] hover:bg-[#f8f8f8] transition">
+                <td class="px-6 py-4 text-gray-700">
+                    {{ $t->description }}
+                </td>
+                <td class="px-6 py-4 font-medium 
+                    {{ $t->amount > 0 ? 'text-green-600' : 'text-red-500' }}">
+                    {{ $t->amount > 0 ? '+' : '-' }} 
+                    Rp {{ number_format(abs($t->amount)) }}
+                </td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="2" class="px-6 py-6 text-center text-gray-500">
+                    Belum ada riwayat transaksi.
+                </td>
+            </tr>
+        @endforelse
+        </tbody>
+    </table>
+
+</div>
 
 @endsection
-

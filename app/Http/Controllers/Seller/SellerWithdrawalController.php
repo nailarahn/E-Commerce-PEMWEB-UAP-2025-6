@@ -11,9 +11,34 @@ class SellerWithdrawalController extends Controller
 {
     public function index()
     {
-        $withdrawals = Withdrawal::where('store_id', Auth::user()->store->id)->latest()->get();
+        $user = Auth::user();
+
+        if (!$user->store) {
+            $store = \App\Models\Store::create([
+                'user_id' => $user->id,
+                'name' => $user->name . "'s Store",
+                'about' => 'Store description',
+                'phone' => '-',
+            ]);
+        } else {
+            $store = $user->store;
+        }
+
+        if (!$store->storeBalance) {
+            $store->storeBalance()->create([
+                'balance' => 0
+            ]);
+        }
+
+        $withdrawals = Withdrawal::where('store_balance_id', $store->storeBalance->id)
+            ->latest()
+            ->get();
+
         return view('seller.withdrawals.index', compact('withdrawals'));
     }
+
+
+
 
     public function create()
     {

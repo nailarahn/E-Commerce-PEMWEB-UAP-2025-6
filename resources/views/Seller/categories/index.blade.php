@@ -3,29 +3,56 @@
 @section('title','Kategori')
 
 @section('content')
-<h1 class="text-2xl font-bold mb-4">Kategori</h1>
+<div class="container-fluid">
 
-<a href="{{ route('seller.categories.create') }}" class="px-4 py-2 bg-blue-600 text-white rounded">Tambah Kategori</a>
+    <h1 class="h3 mb-4 text-gray-800">Kategori</h1>
 
-<table class="w-full mt-6 bg-white rounded shadow">
-    <tr class="border-b">
-        <th class="p-2">Nama</th>
-        <th class="p-2">Aksi</th>
-    </tr>
+    <a href="{{ route('seller.categories.create') }}" class="btn btn-primary mb-3">
+        Tambah Kategori
+    </a>
 
-    @foreach ($categories as $cat)
-    <tr class="border-b">
-        <td class="p-2">{{ $cat->name }}</td>
-        <td class="p-2 flex gap-2">
-            <a href="{{ route('seller.categories.edit',$cat->id) }}" class="text-blue-600">Edit</a>
+    <div class="card shadow">
+        <div class="card-body">
 
-            <form action="{{ route('seller.categories.destroy',$cat->id) }}" method="POST">
-                @csrf @method('DELETE')
-                <button class="text-red-600">Hapus</button>
-            </form>
-        </td>
-    </tr>
-    @endforeach
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Nama</th>
+                            <th width="150">Aksi</th>
+                        </tr>
+                    </thead>
 
-</table>
+                    <tbody>
+                        @foreach ($categories as $cat)
+                        <tr>
+                            <td>{{ $cat->name }}</td>
+                            <td class="d-flex gap-2">
+
+                                <a href="{{ route('seller.categories.edit', $cat->id) }}"
+                                   class="btn btn-sm btn-warning mr-2">
+                                    Edit
+                                </a>
+
+                                <form action="{{ route('seller.categories.destroy', $cat->id) }}"
+                                      method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-danger">
+                                        Hapus
+                                    </button>
+                                </form>
+
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
 @endsection
