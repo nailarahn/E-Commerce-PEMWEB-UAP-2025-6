@@ -46,9 +46,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// PRODUCT DETAIL — PUBLIC
 
-// CUSTOMER — AUTH + MEMBER
+// CUSTOMER 
 Route::middleware(['auth', 'member'])->group(function () {
 
     Route::get('/home', [CustomerHomeController::class, 'index'])->name('customer.home');
@@ -113,23 +112,12 @@ Route::middleware(['auth', 'seller'])
         Route::get('/dashboard', [SellerDashboardController::class, 'index'])
             ->name('dashboard');
 
-        /*
-        |--------------------------------------------------------------------------
-        | STORE PROFILE (Folder: seller/store/)
-        |--------------------------------------------------------------------------
-        */
+   
         Route::get('/store/profile', [SellerStoreController::class, 'edit'])
             ->name('store.profile');
         Route::put('/store/profile', [SellerStoreController::class, 'update'])
         ->name('store.update');
 
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | CATEGORIES (Folder: seller/categories/)
-        |--------------------------------------------------------------------------
-        */
         Route::resource('/categories', SellerCategoryController::class)
             ->names([
                 'index' => 'categories.index',
@@ -141,15 +129,8 @@ Route::middleware(['auth', 'seller'])
             ])
             ->except(['show']);
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | PRODUCTS (Folder: seller/products/)
-        |--------------------------------------------------------------------------
-        */
         Route::resource('/products', SellerProductController::class);
 
-        // khusus halaman images (seller/products/images.blade.php)
         Route::get('/products/{product}/images', [SellerProductImageController::class, 'index'])
             ->name('products.images');
         Route::post('/products/{product}/images', [SellerProductImageController::class, 'store'])
@@ -158,11 +139,6 @@ Route::middleware(['auth', 'seller'])
             ->name('products.images.destroy');
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | ORDERS (Folder: seller/orders/)
-        |--------------------------------------------------------------------------
-        */
         Route::get('/orders', [SellerOrderController::class, 'index'])
             ->name('orders.index');
 
@@ -173,23 +149,12 @@ Route::middleware(['auth', 'seller'])
             ->name('orders.updateStatus');
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | BALANCE (Folder: seller/balance/)
-        |--------------------------------------------------------------------------
-        */
         Route::get('/balance', [SellerBalanceController::class, 'index'])
             ->name('balance.index');
 
         Route::get('/balance/history', [SellerBalanceController::class, 'history'])
             ->name('balance.history');
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | WITHDRAWALS (Folder: seller/withdrawals/)
-        |--------------------------------------------------------------------------
-        */
         Route::get('/withdrawals', [SellerWithdrawalController::class, 'index'])
             ->name('withdrawals.index');
 
