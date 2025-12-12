@@ -2,7 +2,24 @@
 
 @section('content')
 
-<div class="max-w-7xl mx-auto px-6 py-10 mt-24">
+<div class="max-w-7xl mx-auto px-6 py-10 mt-24 bg-white rounded-xl shadow-sm">
+
+    @php
+        function detectCategory($name) {
+            $name = strtolower($name);
+
+            return match (true) {
+                str_contains($name, 'cleanser') => 'Cleanser',
+                str_contains($name, 'face wash') => 'Cleanser',
+                str_contains($name, 'toner') => 'Toner',
+                str_contains($name, 'serum') => 'Serum',
+                str_contains($name, 'moisturizer') => 'Moisturizer',
+                str_contains($name, 'cream') => 'Moisturizer',
+                str_contains($name, 'sunscreen') => 'Sunscreen',
+                default => 'Skincare',
+            };
+        }
+    @endphp
 
     <!-- Breadcrumb -->
     <nav class="text-sm mb-6 text-gray-500">
@@ -21,7 +38,10 @@
 
         <!-- RIGHT PRODUCT INFO -->
         <div>
-            <p class="text-green-700 font-semibold">{{ $product['category'] }}</p>
+            <!-- CATEGORY (warna baru #8BAE8E + deteksi otomatis) -->
+            <p class="text-[#8BAE8E] font-semibold text-sm">
+                {{ detectCategory($product['name']) }}
+            </p>
 
             <h1 class="text-2xl font-bold mt-1">{{ $product['name'] }}</h1>
 
@@ -31,25 +51,18 @@
                 <span class="text-gray-500">(12 Penilaian)</span>
 
                 <!-- Lihat Penilaian -->
-                <button id="btnReview" class="text-green-700 hover:underline ml-2">
+                <button id="btnReview" class="text-[#8BAE8E] hover:underline ml-2">
                     Lihat Penilaian
                 </button>
             </div>
 
             <!-- PRICE -->
             <div class="mt-4">
-                <p class="text-3xl font-bold">Rp {{ number_format($product['price'], 0, ',', '.') }}</p>
-
-                <div class="flex items-center gap-2 mt-1">
-                    <span class="line-through text-gray-400">
-                        Rp {{ number_format($product['price_before'], 0, ',', '.') }}
-                    </span>
-
-                    <span class="text-white px-2 py-1 text-sm bg-green-600 rounded">
-                        {{ $product['discount'] }}%
-                    </span>
-                </div>
+                <p class="text-3xl font-bold">
+                    Rp {{ number_format($product['price'], 0, ',', '.') }}
+                </p>
             </div>
+
 
             <!-- Quantity -->
             <div class="mt-6">
@@ -71,19 +84,14 @@
 
                 <!-- ADD TO CART -->
                 <button id="btnAddCart"
-                    class="px-8 py-3 rounded-lg bg-green-700 text-white font-semibold hover:bg-green-800">
-                    + Keranjang
+                    class="px-6 py-3 rounded-lg bg-[#8BAE8E] text-white font-semibold hover:opacity-90">
+                    + Add to Bag
                 </button>
 
                 <!-- BUY NOW -->
                 <button id="btnBuyNow"
-                    class="px-8 py-3 rounded-lg border border-green-700 text-green-700 font-semibold hover:bg-green-50">
-                    Beli Sekarang
-                </button>
-
-                <!-- WISHLIST -->
-                <button class="px-4 py-3 rounded-lg border hover:bg-gray-100">
-                    <i class="fa-regular fa-heart text-xl"></i>
+                    class="bg-white text-[#8BAE8E] border border-[#8BAE8E] px-5 py-1 rounded-lg hover:bg-[#8BAE8E] hover:text-white font-semibold transition">
+                    Checkout
                 </button>
 
             </div>
@@ -116,37 +124,36 @@
         <!-- TAB CONTENT -->
         <div id="tab-desc" class="tab-content mt-6">
             <p class="text-gray-700 leading-relaxed">
-                {{ $product['desc'] }}
+                {{ $product['desc'] ?? 'Tidak ada deskripsi.' }}
             </p>
         </div>
 
         <div id="tab-use" class="tab-content hidden mt-6">
             <p class="text-gray-700 leading-relaxed">
-                Gunakan 2x sehari untuk hasil maksimal.
+                {{ $product['how_to_use'] ?? 'Informasi cara penggunaan belum tersedia.' }}
             </p>
         </div>
 
+
         <div id="tab-ingredients" class="tab-content hidden mt-6">
             <p class="text-gray-700 leading-relaxed">
-                Water, Glycerin, Aloe Vera Extract, etc.
+                {{ $product['ingredients'] ?? 'Ingredients belum tersedia.' }}
             </p>
         </div>
 
         <div id="tab-who" class="tab-content hidden mt-6">
             <p class="text-gray-700 leading-relaxed">
-                Cocok untuk semua jenis kulit.
+                {{ $product['for_who'] ?? 'Informasi kecocokan belum tersedia.' }}
             </p>
         </div>
 
         <!-- TAB REVIEW -->
         <div id="tab-review" class="tab-content hidden mt-6">
             <h2 class="text-xl font-semibold mb-3">Penilaian Pengguna</h2>
-
             <p class="text-gray-700 mb-2">⭐ 5 — Produk sangat bagus!</p>
             <p class="text-gray-700 mb-2">⭐ 4 — Cocok untuk kulit saya.</p>
             <p class="text-gray-700">⭐ 5 — Harga terjangkau, kualitas oke.</p>
         </div>
-
     </div>
 
 </div>
@@ -204,7 +211,7 @@
         });
     });
 
-    // BUY NOW → hanya ketika tombol diklik
+    // BUY NOW
     document.getElementById('btnBuyNow').addEventListener('click', function() {
         window.location = "{{ route('customer.checkout') }}";
     });
@@ -214,11 +221,11 @@
     .tab-btn {
         padding-bottom: 8px;
         font-weight: 500;
-        color: gray;
+        color: black;
     }
     .active-tab {
-        color: #0c7a43;
-        border-bottom: 2px solid #0c7a43;
+        color: #8BAE8E !important;
+        border-bottom: 2px solid #8BAE8E;
     }
 </style>
 
