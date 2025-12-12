@@ -1,28 +1,29 @@
-@extends('layouts.customer')
+@extends('layouts.app')
 
 @section('content')
-<div class="max-w-5xl mx-auto py-10">
+<div class="max-w-5xl mx-auto mt-10">
 
-    <h2 class="text-2xl font-bold mb-6">Riwayat Transaksi</h2>
+    <h2 class="text-2xl font-bold mb-6">Transaction History</h2>
 
-    @foreach($transactions as $trx)
-    <div class="bg-white p-4 shadow rounded mb-4">
-        <div class="flex justify-between">
-            <div>
-                <h3 class="font-semibold">Invoice #{{ $trx->id }}</h3>
-                <p class="text-gray-600">{{ $trx->created_at->format('d M Y') }}</p>
+    @forelse($orders as $order)
+        <div class="bg-white shadow rounded-xl p-5 mb-4">
+            <div class="flex justify-between">
+                <div>
+                    <p class="font-semibold">Order #{{ $order->order_code }}</p>
+                    <p class="text-gray-500 text-sm">{{ $order->created_at->format('d M Y H:i') }}</p>
+                    <p class="mt-2">Total: <strong>Rp {{ number_format($order->total_amount) }}</strong></p>
+                </div>
+
+                <a href="{{ route('history.detail', $order->id) }}"
+                   class="bg-green-600 text-white px-4 py-2 rounded-lg h-fit">
+                    Details
+                </a>
             </div>
-
-            <p class="font-bold text-lg">Rp {{ number_format($trx->total_price + $trx->shipping_cost) }}</p>
         </div>
 
-        <div class="mt-3">
-            @foreach($trx->details as $item)
-                <p>- {{ $item->product->name }} (x{{ $item->qty }})</p>
-            @endforeach
-        </div>
-    </div>
-    @endforeach
+    @empty
+        <p class="text-gray-500">No transactions found.</p>
+    @endforelse
 
 </div>
 @endsection

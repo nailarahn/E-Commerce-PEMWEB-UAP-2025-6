@@ -32,6 +32,10 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('guest');
 
+Route::get('/topup', function () {
+    return view('customer.wallet.topup');
+})->name('topup');
+
 Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
