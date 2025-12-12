@@ -5,14 +5,26 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Store;
+use Illuminate\Http\Request;
+
 
 class AdminUserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::with('store')->get();
-        return view('admin.users.index', compact('users'));
+        $role = $request->role;
+
+        $users = User::with('store')
+            ->when($role, function ($query) use ($role) {
+                $query->where('role', $role);
+            })
+            ->get();
+
+        return view('admin.users.index', compact('users', 'role'));
     }
+
+
+    
 
     public function detail($id)
     {

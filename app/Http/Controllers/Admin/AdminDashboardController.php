@@ -14,12 +14,17 @@ class AdminDashboardController extends Controller
         $totalStores = Store::count();
         $pendingStores = Store::where('is_verified', false)->count();
         $waitingVerification = $pendingStores; 
+        $verifications = Store::where('is_verified', false)->get();
+        $pendingStoresList = Store::where('is_verified', false)->with('user')->get();
+
 
         return view('admin.dashboard', compact(
         'totalUsers',
         'totalStores',
         'pendingStores',
-        'waitingVerification'
+        'waitingVerification',
+        'verifications',
+        'pendingStoresList'
     ));
 
     }

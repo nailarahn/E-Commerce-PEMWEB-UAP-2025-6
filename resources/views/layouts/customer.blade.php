@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name', 'moin') }}</title>
+    <title>{{ config('app.name', 'Lovellea') }}</title>
+    <link rel="icon" href="{{ asset('assets/images/logo.png') }}" type="image/png">
 
     @vite('resources/css/app.css')
 </head>
