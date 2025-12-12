@@ -10,9 +10,9 @@ class CustomerHomeController extends Controller
 {
     public function index()
     {
+        
         $products = Product::with('store', 'productImages')->latest()->get();
         $categories = ProductCategory::all();
-
         return view('customer.home', compact('products', 'categories'));
     }
 }

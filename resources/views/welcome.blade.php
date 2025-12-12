@@ -232,7 +232,7 @@
             @endphp
 
             @foreach ($categories as $c)
-                <a href="{{ $c['slug'] ?? '#' }}">
+                <a href="{{route('login')}}">
                     <div class="min-w-[200px] md:min-w-[250px] rounded-xl overflow-hidden relative group flex-shrink-0">
                         <img src="/assets/images/{{ $c['img'] }}"
                              class="object-cover h-40 w-full group-hover:scale-110 transition">
