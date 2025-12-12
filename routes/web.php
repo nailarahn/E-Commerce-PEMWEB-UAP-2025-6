@@ -33,6 +33,8 @@ use App\Http\Controllers\Customer\{
     CustomerWalletController
 };
 
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+
 Route::middleware(['auth', 'member'])->group(function () {
 
     Route::get('/home', [CustomerHomeController::class, 'index'])->name('customer.home');
@@ -82,5 +84,4 @@ Route::middleware(['auth', 'admin'])
 Route::get('/payment', fn()=>view('payment.index'));
 Route::get('/payment/confirm', fn()=>view('payment.confirm'));
 Route::get('/payment/result', fn()=>view('payment.result'));
-
 

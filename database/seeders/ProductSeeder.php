@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
         $products = [
             [
                 'name' => 'Skintific 5X Ceramide Low pH Cleanser',
-                'product_category_id' => 1,
+                'slug' => 'skintific-cleanser',
                 'price' => 65000,
                 'description' => 'Cleanser gentle dengan Ceramide untuk skin barrier.',
                 'weight' => 120,

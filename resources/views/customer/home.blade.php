@@ -36,9 +36,10 @@
                 <p class="text-gray-500 text-sm">{{ $p['desc'] }}</p>
                 <p class="mt-1 font-bold">Rp. {{ $p['price'] }}</p>
 
-                <button class="mt-3 w-full py-2 bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
+                <a href="{{ route('product.show', $loop->iteration) }}"
+                    class="mt-3 block text-center w-full py-2 bg-[#8BAE8E] text-white rounded-lg hover:opacity-90">
                     Product Details
-                </button>
+                </a>
             </div>
         @endforeach
 

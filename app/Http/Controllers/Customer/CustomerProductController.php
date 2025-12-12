@@ -9,9 +9,7 @@ class CustomerProductController extends Controller
 {
     public function show($slug)
     {
-        $product = Product::with(['images', 'store', 'reviews.user'])
-                    ->where('slug', $slug)
-                    ->firstOrFail();
+        $product = Product::where('slug', $slug)->firstOrFail();
 
         return view('customer.product', compact('product'));
     }
